@@ -43,9 +43,11 @@ bot.on("message", async message =>{
 });
 
 bot.on("voiceStateUpdate", function(oldMember, newMember){
-    let newUserChannel = newMember.voiceChannel
-    let oldUserChannel = oldMember.voiceChannel
-    console.log(`a user changes voice state ${newUserChannel} ${oldUserChannel}`)
+    let joinChannel = newMember.voiceChannel
+    let leaveChannel = oldMember.voiceChannel
+
+    if(newMember.voiceChannel.id = 630007478008020992)
+    console.log(`進入了943${joinChannel} ${leaveChannel}`)
 
 })
 
