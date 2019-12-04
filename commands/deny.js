@@ -30,6 +30,7 @@ if(!message.member.roles.has(role.dcadmin)){
     let newbierole = message.guild.roles.get(`616469184905478160`)
     
     accepter.addRole(newbierole)
+    accepter.removeRole(role.pending)
 
     message.delete()
     

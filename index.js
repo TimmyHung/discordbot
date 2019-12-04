@@ -42,17 +42,15 @@ bot.on("message", async message =>{
 
 });
 
-bot.on("voiceStateUpdate", function(oldMember, newMember){
-    let joinChannel = newMember.voiceChannel
-    let leaveChannel = oldMember.voiceChannel
-
-    if(newMember.voiceChannel.id == 630007478008020992)
-        return newMember.addRole(role.harry)
-    if(newUserChannel === undefined){
-        return newMember.removeRole(role.harry)
-    } else if(newMember.voiceChannel.id != 630007478008020992)
-        return newMember.removeRole(role.harry)
-})
+//bot.on("voiceStateUpdate", function(oldMember, newMember){
+//    let joinChannel = newMember.voiceChannel
+ //   let leaveChannel = oldMember.voiceChannel
+//
+ //   if(newMember.voiceChannel.id == 630007478008020992)
+ //       return newMember.addRole(role.harry)
+ //   if(newMember.voiceChannel.id != 630007478008020992)
+//        return newMember.addRole(role.harry)
+//})
 
 
 bot.login(process.env.bottoken);

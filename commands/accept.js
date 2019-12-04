@@ -25,6 +25,7 @@ if(!message.member.roles.has(role.dcadmin)){
     
     accepter.addRole(playerRole)
     accepter.removeRole(newbieRole)
+    accepter.removeRole(role.pending)
 
     message.delete()
     message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已通過。`).then(m => m.delete(5000));
