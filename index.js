@@ -46,7 +46,7 @@ bot.on("message", async message =>{
     if(message.author.id != "609283910441893899"){
         return;
     } else message.react('😡')
-        .then(() => message.react('🥒');
+        .then(() => message.react('🥒'))
 })
 
 bot.login(process.env.bottoken);
