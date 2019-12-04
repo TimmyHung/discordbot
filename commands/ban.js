@@ -19,7 +19,7 @@ if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("
 //確認禁言原因
 let banMember = message.mentions.members.first() || message.guild.members.get(args[0]);
 
-if(banMember == message.author)
+if(banMember == message.member)
     return message.channel.send("[錯誤]你不能封鎖自己!")
     .then(() => message.react('❌'));
 
