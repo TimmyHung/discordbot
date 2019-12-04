@@ -42,10 +42,8 @@ bot.on("message", async message =>{
 
 });
 
-bot.on("message", async message =>{
-    if(message.member.roles.has("651722097269407744")){
-        message.react('😡')
-        .then(() => message.react('🥒'))
-}});
+bot.on("voiceStateUpdate", function(oldMember, newMember){
+    console.log(`a user changes voice state`);
+})
 
 bot.login(process.env.bottoken);
