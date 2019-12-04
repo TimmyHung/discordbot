@@ -17,11 +17,10 @@ module.exports.run = async (bot, message, args) =>{
     let newbierole = message.guild.roles.get(`616469184905478160`)
     let verifier = message.member
 
-
+    message.channel.send("[提示]請查看你的私訊").then(m => m.delete(5000));
     verifier.removeRole(newbierole)
     verifier.addRole(role.pending)
     message.delete()
-    message.channel.send("[提示]請查看你的私訊").then(m => m.delete(5000));
 
     let pEmbed = new Discord.RichEmbed()
     .setColor(colors.darkblue)
@@ -39,7 +38,7 @@ module.exports.run = async (bot, message, args) =>{
     let nickEmbed = new Discord.RichEmbed()
     .setColor(colors.white)
     .setAuthor("暱稱審核申請", message.guild.iconURL)
-    .addField("申請用戶:", `<@${verifier.user.tag}> (${verifier.user.id})`)
+    .addField("申請用戶:", `${verifier.user.tag} (${verifier.user.id})`)
     .addField("申請暱稱:", verifier.displayName)
     .addField("審核通過指令:", `${prefix}accept @${verifier.user.tag}`)
     .addField("審核駁回指令:", `${prefix}deny @${verifier.user.tag} <駁回原因>`)
