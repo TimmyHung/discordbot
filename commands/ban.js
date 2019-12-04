@@ -18,15 +18,17 @@ if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("
 
 //確認禁言原因
 let banMember = message.mentions.members.first() || message.guild.members.get(args[0]);
+
+if(banMember == message.author)
+    return message.channel.send("[錯誤]你不能封鎖自己!")
+    .then(() => message.react('❌'));
+
 if(!banMember) return message.channel.send("[提示]未知用戶名，請確認你有正確 @用戶，或是 `!!help ban` 查看指令說明")
         .then(() => message.react('❌'));
 
 let reason = args.slice(1).join(" ");
 if(!reason) reason = "無原因可提供"
 
-if(banMember == message.author)
-    return message.channel.send("[錯誤]你不能封鎖自己!")
-    .then(() => message.react('❌'));
 
 //先發送訊息給被違規用戶
     message.delete();
