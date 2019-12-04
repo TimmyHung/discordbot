@@ -46,9 +46,9 @@ module.exports.run = async (bot, message, args) =>{
     .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
     adminchannel.send(nickEmbed)
-    adminchannel.send("貼心的可複製文字:")
-    adminchannel.send(`${prefix}accept <@!${verifier.user.id}>`)
-    adminchannel.send(`${prefix}deny <@!${verifier.user.id}> <駁回原因>`)
+    .then(() => adminchannel.send("貼心的可複製文字:"))
+    .then(() => adminchannel.send(`${prefix}accept <@!${verifier.user.id}>`))
+    .then(() => adminchannel.send(`${prefix}deny <@!${verifier.user.id}> <駁回原因>`))
 }
 module.exports.config = {
     name: "verify",
