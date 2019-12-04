@@ -23,7 +23,7 @@ if(!message.member.roles.has(role.dcadmin)){
     if(accepter.roles.has(role.member))
         return message.channel.send("[錯誤]該玩家已經是正式會員了")
     
-    if(accepter.roles.has(role.pending))
+    if(!accepter.roles.has(role.pending))
         return message.channel.send("[錯誤]該玩家並沒有提出審核申請")
     
     let reason = args.slice(1).join(" ");
