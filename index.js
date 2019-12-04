@@ -48,4 +48,4 @@ bot.on("message", async message =>{
     } else message.react('😡');
 })
 
-bot.login(botconfig.token);
+bot.login(process.env.botconfig.token);
