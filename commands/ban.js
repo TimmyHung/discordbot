@@ -9,23 +9,25 @@ module.exports.run = async (bot, message, args) =>{
 
 let punishchannel =message.guild.channels.get("557512829327114250")
 
-if(!message.member.roles.has(role.dcadmin))
-        return message.channel.send("[錯誤]權限不足")
-
+if(!message.member.roles.some(["role.dcadmin","role.admin"])) return message.channel.send("[錯誤]權限不足");
+if(message.member.roles.has(role.dcadmin) || message.channel.id != 557512829327114250) 
+        return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
 
 //查看指令使用者和BOT是否有權限
+if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("你哪根蔥阿，想叫我做事?還太嫩了點");
 if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(BAN_MEMBERS)")
 
 //確認禁言原因
 let banMember = message.mentions.members.first() || message.guild.members.get(args[0]);
-
-
 if(!banMember) return message.channel.send("[提示]未知用戶名，請確認你有正確 @用戶，或是 `!!help ban` 查看指令說明")
         .then(() => message.react('❌'));
 
 let reason = args.slice(1).join(" ");
 if(!reason) reason = "無原因可提供"
 
+if(banMember == message.author)
+    return message.channel.send("[錯誤]你不能封鎖自己!")
+    .then(() => message.react('❌'));
 
 //先發送訊息給被違規用戶
     message.delete();
@@ -37,7 +39,7 @@ if(!reason) reason = "無原因可提供"
     .addField("違規原因:", reason)
     .addField("違規群組:", message.guild.name)
     .addField("操作人員:", message.author.tag)
-    .addField("執行日期:", message.createdAt.toLocaleString())
+    .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
     .addField("申訴管道:", "[Facebook粉絲專頁](https://zh-tw.facebook.com/PETServer)")
 
 //執行封鎖
