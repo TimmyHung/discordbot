@@ -43,7 +43,11 @@ bot.on("message", async message =>{
 });
 
 bot.on("voiceStateUpdate", function(oldMember, newMember){
-    console.log(`a user changes voice state`);
+    let newUserChannel = newMember.voiceChannel
+    let oldUserChannel = oldMember.voiceChannel
+    console.log(`a user changes voice state ${newUserChannel} ${oldUserChannel}`)
+
 })
+
 
 bot.login(process.env.bottoken);
