@@ -3,14 +3,17 @@ const botconfig = require("../botconfig.json");
 const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
+const role = require("../role.json")
 const ok = "✅";
 const no = "❌";
 
 module.exports.run = async (bot, message, args) =>{
 
+    
     if(message.channel.id != 649290903449632791)
         return message.channel.send("[錯誤]你已經是正式會員了，沒有必要使用這個指令!")
-    
+    if(!message.member.roles.has(role.newbie))
+        return message.channel.send("[錯誤]你已經是正式會員了，沒有必要使用這個指令!")
     let newbierole = message.guild.roles.get(`616469184905478160`)
     let verifier = message.member
 

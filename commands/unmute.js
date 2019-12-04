@@ -3,10 +3,17 @@ const botconfig = require("../botconfig.json");
 const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
+const role = require("../role.json");
 
 module.exports.run = async (bot, message, args) =>{
-//查看指令使用者和BOT是否有權限
-if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("你哪根蔥阿，想叫我做事?還太嫩了點");
+
+let punishchannel = message.guild.channels.get("557512829327114250")
+
+if(message.member.roles.some(r=>[role.dcadmin, role.admin].includes(r.name))) return message.channel.send("[錯誤]權限不足");
+if(!message.member.roles.has(role.dcadmin)){ 
+} else if(message.channel.id != 557512829327114250)
+        return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
+
 if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(MANAGE_ROLE)")
 
 //取得禁言權限組
@@ -39,7 +46,7 @@ let embed = new Discord.RichEmbed()
 .addField("撤銷用戶:", mutee.user.tag)
 .addField("撤銷原因:", reason)
 .addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString())
+.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
 
 let sChannel = message.guild.channels.find(c => c.name === "測試頻道")
 sChannel.send(embed)
