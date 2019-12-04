@@ -47,7 +47,7 @@ bot.on("voiceStateUpdate", function(oldMember, newMember){
     let leaveChannel = oldMember.voiceChannel
 
     if(newMember.voiceChannel.id = 630007478008020992)
-    console.log(`進入了943${joinChannel} ${leaveChannel}`)
+     return console.log(`進入了943${joinChannel} ${leaveChannel}`)
 
 })
 
