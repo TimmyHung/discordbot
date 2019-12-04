@@ -3,7 +3,7 @@ const colors = require("./color.json");
 const Discord = require("discord.js");
 const superagent = require("superagent")
 const client = new Discord.Client();
-
+const role = require("./role.json);
 
 const bot = new Discord.Client({disableEveryone: true});
 
@@ -43,7 +43,7 @@ bot.on("message", async message =>{
 });
 
 bot.on("message", async message =>{
-    if(message.author.id != "609283910441893899"){
+    if(message.member.roles.has(role.wanted)){
         return;
     } else message.react('😡')
         .then(() => message.react('🥒'))
