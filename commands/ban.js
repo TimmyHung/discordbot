@@ -24,7 +24,7 @@ if(!banMember) return message.channel.send("[提示]未知用戶名，請確認�
 let reason = args.slice(1).join(" ");
 if(!reason) reason = "無原因可提供"
 
-if(banMember === message.author)
+if(banMember == message.author)
     return message.channel.send("[錯誤]你不能封鎖自己!")
     .then(() => message.react('❌'));
 
