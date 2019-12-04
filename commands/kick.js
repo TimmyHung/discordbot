@@ -1,0 +1,56 @@
+const Discord = require("discord.js");
+const botconfig = require("../botconfig.json");
+const colors = require("../color.json");
+const superagent = require("superagent");
+const prefix = botconfig.prefix
+
+module.exports.run = async (bot, message, args) =>{
+//查看指令使用者和BOT是否有權限
+if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("你哪根蔥阿，想叫我做事?還太嫩了點");
+if(!message.guild.me.hasPermission("KICK_MEMBERS")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(KICK_MEMBERS)")
+  
+let kickMember = message.mentions.members.first() || message.guild.members.get(args[0])
+if(!kickMember) return message.channel.send("[提示]未知用戶名，請確認你有正確 @用戶，或是 `!!help kick` 查看指令說明")
+        .then(() => message.react('❌'));
+
+let reason = args.slice(1).join(" ");
+if(!reason) reason = "無原因可提供"
+
+
+let Kembed = new Discord.RichEmbed()
+    .setColor(colors.orange)
+    .setAuthor("違規行為告知", message.guild.iconURL)
+    .addField("懲處類別:", "踢出伺服器")
+    .addField("違規原因:", reason)
+    .addField("違規群組:", message.guild.name)
+    .addField("操作人員:", message.author.tag)
+    .addField("執行日期:", message.createdAt.toLocaleString())
+    .addField("申訴管道:", "[Facebook粉絲專頁](https://zh-tw.facebook.com/PETServer)")
+message.delete()
+kickMember.send("如果對於自己的處分有任何疑問，歡迎來訊至我們的粉絲專頁")
+kickMember.send(Kembed).then(() =>
+kickMember.kick().catch(err => console.log(err)))
+message.channel.send(`用戶:${kickMember.user.username} 已被踢出伺服器，原因: ${reason}。`).then(m => m.delete(5000));
+
+//發送紀錄訊息
+
+let embed = new Discord.RichEmbed()
+.setColor(colors.red)
+.setAuthor("伺服器懲處紀錄", message.guild.iconURL)
+.addField("懲處類別:", "踢出伺服器")
+.addField("違規用戶:", kickMember.user.tag)
+.addField("違規原因:", reason)
+.addField("操作人員:", message.author.tag)
+.addField("執行日期:", message.createdAt.toLocaleString())
+
+let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
+sChannel.send(embed)
+}
+module.exports.config = {
+    name: "kick",
+    aliases: ["kick"],
+    usage: `${prefix}kick <@成員> <原因>`,
+    description: "將指定用戶踢出伺服器",
+    noalias: "無指令縮寫",
+    user: "`DC小管理`"
+}

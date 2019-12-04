@@ -1,0 +1,19 @@
+const Discord = require("discord.js");
+const botconfig = require("../botconfig.json");
+const colors = require("../color.json");
+const superagent = require("superagent");
+const prefix = botconfig.prefix
+
+module.exports.run = async (bot, message, args) =>{
+
+
+}
+
+module.exports.config = {
+    name: "reload",
+    aliases: ["reload"],
+    usage: `${prefix}reload`,
+    description: "重新讀取某個BOT指令",
+    noalias: "無指令縮寫",
+    user: "BOT擁有者"
+}

@@ -1,0 +1,53 @@
+const Discord = require("discord.js");
+const botconfig = require("../botconfig.json");
+const colors = require("../color.json");
+const superagent = require("superagent");
+const prefix = botconfig.prefix
+
+module.exports.run = async (bot, message, args) =>{
+//查看指令使用者是否有權限
+if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("你哪根蔥阿，想叫我做事?還太嫩了點")
+
+//查看用戶ID和解除封鎖原因
+var banMember = await bot.fetchUser(args[0])
+
+//if(banMember.length != 18 || banMember == "" || banMember.length > 18)
+if(banMember.id.length !=18)
+    return message.channel.send("未知用戶名，請確認你有提供正確的用戶ID，或是 `!!help unban` 查看指令說明"+banMember+banMember.id+" "+banMember.user+" "+banMember.username+" "+args[0])
+    .then(() => message.react('❌'));
+    
+
+var reason = args.slice(1).join(" ");
+    if(!reason) reason = "無原因可提供"
+
+    if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(BAN_MEMBERS)")
+
+//先發送訊息給被違規用戶
+message.delete()
+
+message.guild.unban(banMember)
+.then(() => message.channel.send(`用戶:${banMember.user.username} 已被撤銷封鎖，原因: ${reason}。`).then(m => m.delete(5000)));
+
+//發送紀錄訊息
+
+var embed = new Discord.RichEmbed()
+.setColor(colors.darkgreen)
+.setAuthor("伺服器撤銷紀錄", message.guild.iconURL)
+.addField("撤銷類別:", "封鎖")
+.addField("撤銷用戶:", `${banMember.username} (${banMember.id})`)
+.addField("撤銷原因:", reason)
+.addField("操作人員:", message.author.tag)
+.addField("執行日期:", message.createdAt.toLocaleString())
+
+var sChannel = message.guild.channels.find(c => c.name === "測試頻道")
+sChannel.send(embed)
+
+}
+module.exports.config = {
+    name: "unban",
+    aliases: ["unban"],
+    usage: `${prefix}unban <用戶ID> <原因>`,
+    description: "將指定用戶從這個伺服器解除封鎖",
+    noalias: "無指令縮寫",
+    user: "DC小管理"
+}
