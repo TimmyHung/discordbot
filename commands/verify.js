@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) =>{
     let nickEmbed = new Discord.RichEmbed()
     .setColor(colors.white)
     .setAuthor("暱稱審核申請", message.guild.iconURL)
-    .addField("申請用戶:", `${verifier.user.tag} (${verifier.user.id})`)
+    .addField("申請用戶:", `<@${verifier.user.tag}> (${verifier.user.id})`)
     .addField("申請暱稱:", verifier.displayName)
     .addField("審核通過指令:", `${prefix}accept @${verifier.user.tag}`)
     .addField("審核駁回指令:", `${prefix}deny @${verifier.user.tag} <駁回原因>`)
