@@ -45,6 +45,7 @@ if(!message.member.roles.has(role.dcadmin)){
     .addField("用戶暱稱:", accepter.displayName)
     .addField("審核結果:", "未通過")
     .addField("駁回原因:", reason)
+    .addField("用戶須知:", "確認暱稱沒有任何問題後\n可以於相同頻道再次提出申請")
     .setTimestamp()
     .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 

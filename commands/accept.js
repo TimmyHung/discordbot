@@ -20,6 +20,12 @@ if(!message.member.roles.has(role.dcadmin)){
     if(!accepter) return message.channel.send("[提示]未知用戶名，請確認你有正確 @用戶，或是 `!!help accept` 查看指令說明")
             .then(() => message.react('❌'))
 
+    if(accepter.roles.has(role.member))
+        return message.channel.send("[錯誤]該玩家已經是正式會員了")
+        
+    if(!accepter.roles.has(role.pending))
+        return message.channel.send("[錯誤]該玩家並沒有提出審核申請")
+    
     let playerRole = message.guild.roles.get(`557565545898049536`)
     let newbieRole = message.guild.roles.get(`616469184905478160`)
     
