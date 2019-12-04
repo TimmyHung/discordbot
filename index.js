@@ -44,8 +44,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     if(message.member.roles.has(role.wanted)){
-        return;
-    } else message.react('😡')
+        message.react('😡')
         .then(() => message.react('🥒'))
 })
 
