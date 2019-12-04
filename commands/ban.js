@@ -54,7 +54,7 @@ let embed = new Discord.RichEmbed()
 .addField("違規用戶:", banMember.user.tag)
 .addField("違規原因:", reason)
 .addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString('zh-tw', { timeZone: 'GMT+8' }))
+.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'})
 
 let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
 sChannel.send(embed)
