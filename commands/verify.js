@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) =>{
     message.delete()
 
     let pEmbed = new Discord.RichEmbed()
-    .setColor(colors.darkblue)
+    .setColor(colors.white)
     .setAuthor("暱稱審核申請已成功送出", message.guild.iconURL)
     .addField("申請用戶:", verifier.user.tag)
     .addField("用戶暱稱:", verifier.displayName)
@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, args) =>{
     let adminchannel = message.guild.channels.get("648476721200496670")
 
     let nickEmbed = new Discord.RichEmbed()
-    .setColor(colors.white)
+    .setColor(colors.orange)
     .setAuthor("暱稱審核申請", message.guild.iconURL)
     .addField("申請用戶:", `${verifier.user.tag} (${verifier.user.id})`)
     .addField("申請暱稱:", verifier.displayName)
@@ -46,6 +46,9 @@ module.exports.run = async (bot, message, args) =>{
     .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
     adminchannel.send(nickEmbed)
+    adminchannel.send("貼心的可複製文字:")
+    adminchannel.send(`${prefix}accept <@!${verifier.user.id}>`)
+    adminchannel.send(`${prefix}deny <@!${verifier.user.id}> <駁回原因>`)
 }
 module.exports.config = {
     name: "verify",
