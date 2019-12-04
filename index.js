@@ -46,6 +46,6 @@ bot.on("message", async message =>{
     if(message.member.roles.has(role.wanted)){
         message.react('😡')
         .then(() => message.react('🥒'))
-})
+}});
 
 bot.login(process.env.bottoken);
