@@ -33,7 +33,8 @@ if(!message.member.roles.has(role.dcadmin)){
     accepter.removeRole(role.pending)
 
     message.delete()
-    
+    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已駁回。`).then(m => m.delete(5000));
+
     let pEmbed = new Discord.RichEmbed()
     .setColor(colors.red)
     .setAuthor("暱稱審核結果", message.guild.iconURL)
