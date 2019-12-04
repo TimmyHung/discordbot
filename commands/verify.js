@@ -10,10 +10,10 @@ const no = "❌";
 module.exports.run = async (bot, message, args) =>{
 
     
-    if(message.channel.id != 649290903449632791)
+    if(message.channel.id != 612251214310014977)
         return message.channel.send("[錯誤]你已經是正式會員了，沒有必要使用這個指令!")
     if(!message.member.roles.has(role.newbie))
-        return message.channel.send("[錯誤]你已經是正式會員了，沒有必要使用這個指令!")
+        return message.channel.send("[錯誤]你的審核要求已送出，重複申請並不會讓你更快通過審核，請耐心等候!").then(m => m.delete(5000));
     let newbierole = message.guild.roles.get(`616469184905478160`)
     let verifier = message.member
 
