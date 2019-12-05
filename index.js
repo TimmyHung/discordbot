@@ -45,7 +45,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     
-    let question = args[0];
+    let question = args.join(" ");
     let askEmbed = new Discord.RichEmbed()
         .setColor(colors.darkblue)
         .setAuthor("問題:", message.guild.iconURL)

@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) =>{
     .then(() => message.react('❌'));
 
     let argsresult;
-    let mChannel =message.mentions.channels.first()
+    let mChannel = message.mentions.channels.first()
 
     message.delete()
     if(mChannel) {
