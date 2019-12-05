@@ -28,8 +28,8 @@ module.exports.run = async (bot, message, args) =>{
     .addField("申請用戶:", verifier.user.tag)
     .addField("用戶暱稱:", verifier.displayName)
     .addField("用戶須知:", "審核將於一天內完成\n還請您耐心等候通知")
-    .setTimestamp()
-    .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
+   // .setTimestamp()
+    //.setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
     verifier.send(pEmbed)
 
