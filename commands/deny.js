@@ -32,7 +32,8 @@ if(!message.member.roles.has(role.dcadmin)){
 
     let newbierole = message.guild.roles.get(`616469184905478160`)
     
-    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已駁回。`).then(() => message.react('❌'))
+    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已駁回。`)
+    message.react('❌')
     accepter.addRole(newbierole)
     accepter.removeRole(role.pending)
 
