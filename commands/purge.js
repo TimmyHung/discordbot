@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) =>{
 
     message.channel.bulkDelete(args[0])
         .then( messages => message.channel.send(`**成功移除 \`${message.size}/${args[0]}\` 訊息**`))
-        .then( msg => msg.delete({ timeout: 3}))
+        .then(m => m.delete(5000))
         .catch( error => console.log(error))
 }
 
