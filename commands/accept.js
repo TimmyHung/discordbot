@@ -29,7 +29,7 @@ if(!message.member.roles.has(role.dcadmin)){
     let playerRole = message.guild.roles.get(`557565545898049536`)
     let newbieRole = message.guild.roles.get(`616469184905478160`)
     
-    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已通過。`).then(m => m.delete(5000));
+    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已通過。`).then(() => message.react('✅'))
     accepter.addRole(playerRole)
     accepter.removeRole(newbieRole)
     accepter.removeRole(role.pending)
