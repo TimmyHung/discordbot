@@ -42,6 +42,60 @@ bot.on("message", async message =>{
 
 });
 
+bot.on("message", async message =>{
+    if(message.author.bot) return;
+    if(message.content.toLowerCase() === message.channel.id === '651080117006762014'){
+        if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
+            channel.name.toLowerCase() === message.author.id + '的問題小房間')) {
+                message.author.send("[錯誤]你已經有一間問題小房間了!")
+            }
+            else {
+                let guild = message.guild;
+                guild.createChannel(`${message.author.username}的問題小房間`, {
+                    type: 'text',
+                    permissionOverwrites: [
+                        {
+                                allow: 'VIEW_CHANNEL',
+                                id: message.author.id
+                        },
+                        {
+                                deny: 'VIEW_CHANNEL',
+                                id: guild.id
+                        }
+                    ]
+                }).then(ch => {
+                    userTickets.set(message.author.id, ch.id); // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
+                }).catch(err => console.log(err));
+            }
+        }
+        else if(message.content.toLowerCase() === '!!closeticket') { // Closing the ticket.
+            if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
+                if(message.channel.id === userTickets.get(message.author.id)) {
+                    message.channel.delete('closing ticket') // Delete the ticket.
+                    .then(channel => {
+                        console.log("Deleted " + channel.name);
+                        userTickets.delete(message.author.id);
+                    })
+                    .catch(err => console.log(err));
+                }
+            }
+            /** 
+             * Here we will check the server to see if there were additional tickets created that the bot may have missed due to 
+             * either crashing, restarting, etc.. This part will delete ALL of the tickets that follow the format of 
+             * "<username>s-ticket" because that was the way we hard-coded. You can modify this obviously.
+             */
+            if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + 's-ticket')) {
+                message.guild.channels.forEach(channel => {
+                    if(channel.name.toLowerCase() === message.author.username + 's-ticket') {
+                        channel.delete().then(ch => console.log('Deleted Channel ' + ch.id))
+                        .catch(err => console.log(err));
+                    }
+                });
+            }
+        }
+    });
+
+
 //bot.on("voiceStateUpdate", function(oldMember, newMember){
 //    let joinChannel = newMember.voiceChannel
  //   let leaveChannel = oldMember.voiceChannel
