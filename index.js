@@ -45,7 +45,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     let messageArray = message.content.split(" ")
-    let args = messageArray.slice(1)
+    let args = messageArray
     let question;
 
     if(message.author.bot) return;
@@ -57,7 +57,7 @@ bot.on("message", async message =>{
         .setColor(colors.darkblue)
         .setAuthor("詢問的問題", message.guild.iconURL)
         .setDescription(question)
-        .setFooter(`P.E.T伺服器 用戶協助•此為 ${message.author.name} 詢問的問題`, bot.user.displayAvatarURL);
+        .setFooter(`P.E.T伺服器 用戶協助•此為 ${message.author.username} 詢問的問題`, bot.user.displayAvatarURL);
 
 
         if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
