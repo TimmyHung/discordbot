@@ -52,7 +52,7 @@ bot.on("message", async message =>{
     if(message.channel.id === '651080117006762014'){
         message.delete()
         question = args.join(" ")
-        let timmy = message.guild.member.get(role.timmyhung)
+        let timmy = message.guild.members.get(role.timmyhung)
         let askEmbed = new Discord.RichEmbed()
         .setColor(colors.yellow)
         .setAuthor(`${message.author.username} 問到:`, message.guild.iconURL)
