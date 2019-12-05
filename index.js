@@ -44,6 +44,14 @@ bot.on("message", async message =>{
 });
 
 bot.on("message", async message =>{
+    
+    let question = args[0];
+    let askEmbed = new Discord.RichEmbed()
+        .setColor(colors.darkblue)
+        .setAuthor("問題:", message.guild.iconURL)
+        .setDescription(question)
+        .setFooter(`PETTW.ONLINE•此為 ${message.member.displayName} 詢問的問題}`, bot.user.displayAvatarURL);
+
     if(message.author.bot) return;
     if(message.channel.id === '651080117006762014'){
         message.delete()
@@ -68,6 +76,7 @@ bot.on("message", async message =>{
                 })
 
                 await channel.setParent('652192577398767639')
+                    .then(() => channel.send(askEmbed))
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id); // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
                 }).catch(err => console.log(err));
@@ -96,6 +105,9 @@ bot.on("message", async message =>{
                         .catch(err => console.log(err));
                     }
                 });
+            //小管理判定回復
+            
+            
             }
         }
     });
