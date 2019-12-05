@@ -44,7 +44,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     if(message.author.bot) return;
-    if(message.content.toLowerCase() === message.channel.id === '651080117006762014'){
+    if(message.channel.id === '651080117006762014'){
         if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
             channel.name.toLowerCase() === message.author.id + '的問題小房間')) {
                 message.author.send("[錯誤]你已經有一間問題小房間了!")
