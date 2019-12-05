@@ -57,7 +57,7 @@ bot.on("message", async message =>{
         .setColor(colors.yellow)
         .setAuthor(`${message.member.displayName} 問到:`, message.guild.iconURL)
         .setDescription(question)
-        .setFooter(`伺服器玩家協助•由 **${timmy.user.tag}** 開發`, bot.user.displayAvatarURL);
+        .setFooter(`伺服器玩家協助•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL);
 
 
         if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
