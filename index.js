@@ -47,16 +47,19 @@ bot.on("message", async message =>{
     let messageArray = message.content.split(" ")
     let args = messageArray.slice(1)
     let question;
-    let askEmbed = new Discord.RichEmbed()
-        .setColor(colors.darkblue)
-        .setAuthor("詢問的問題", message.guild.iconURL)
-        .setDescription(question)
-        .setFooter(`P.E.T伺服器 用戶協助•此為 ${message.author.name} 詢問的問題`, bot.user.displayAvatarURL);
 
     if(message.author.bot) return;
     if(message.channel.id === '651080117006762014'){
         message.delete()
         question = args.join(" ")
+        
+        let askEmbed = new Discord.RichEmbed()
+        .setColor(colors.darkblue)
+        .setAuthor("詢問的問題", message.guild.iconURL)
+        .setDescription(question)
+        .setFooter(`P.E.T伺服器 用戶協助•此為 ${message.author.name} 詢問的問題`, bot.user.displayAvatarURL);
+
+
         if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
             channel.name.toLowerCase() === message.author.id + '-問題小房間')) {
                 message.channel.send("[錯誤]你已經有一間問題小房間了!").then(m => m.delete(5000))
