@@ -81,3 +81,13 @@ bot.on("message", async message =>{
     });
 
 }
+
+
+module.exports.config = {
+    //name: "accept",
+    //aliases: ["accept"],
+    //usage: `${prefix}accept <@用戶>`,
+    //description: "審核暱稱時使用",
+    //noalias: "無指令縮寫",
+    //user: "`DC小管理`"
+}
