@@ -76,6 +76,10 @@ bot.on("message", async message =>{
                         {
                                 deny: 'VIEW_CHANNEL',
                                 id: guild.id
+                        },
+                        {
+                                allow: 'VIEW_CHANNEL',
+                                id: role.dcadmin
                         }
                     ]
                 })
