@@ -52,12 +52,12 @@ bot.on("message", async message =>{
     if(message.channel.id === '651080117006762014'){
         message.delete()
         question = args.join(" ")
-        
+        let timmy = message.guild.member.get(role.timmyhung)
         let askEmbed = new Discord.RichEmbed()
-        .setColor(colors.darkblue)
-        .setAuthor("詢問的問題", message.guild.iconURL)
+        .setColor(colors.yellow)
+        .setAuthor(`${message.author.username} 問到:`, message.guild.iconURL)
         .setDescription(question)
-        .setFooter(`P.E.T伺服器 用戶協助•此為 ${message.author.username} 詢問的問題`, bot.user.displayAvatarURL);
+        .setFooter(`伺服器玩家協助•由 ${timmy} 開發`, bot.user.displayAvatarURL);
 
 
         if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
