@@ -1,13 +1,13 @@
-const botconfig = require("../botconfig.json");
-const colors = require("../color.json");
+const botconfig = require("./botconfig.json");
+const colors = require("./color.json");
 const Discord = require("discord.js");
 const superagent = require("superagent")
 const client = new Discord.Client();
-const role = require("../role.json");
+const role = require("./role.json");
 
 const bot = new Discord.Client;
 
-
+require("./util/eventHandler")(bot)
 
 const fs = require("fs");
 bot.commands = new Discord.Collection();
