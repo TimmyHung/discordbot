@@ -49,9 +49,9 @@ bot.on("message", async message =>{
     let question;
     let askEmbed = new Discord.RichEmbed()
         .setColor(colors.darkblue)
-        .setAuthor("問題:", message.guild.iconURL)
+        .setAuthor("詢問的問題", message.guild.iconURL)
         .setDescription(question)
-        .setFooter(`PETTW.ONLINE•此為 ${message.author.id} 詢問的問題}`, bot.user.displayAvatarURL);
+        .setFooter(`P.E.T伺服器 用戶協助•此為 ${message.author.name} 詢問的問題`, bot.user.displayAvatarURL);
 
     if(message.author.bot) return;
     if(message.channel.id === '651080117006762014'){
@@ -78,8 +78,7 @@ bot.on("message", async message =>{
                 })
 
                 await channel.setParent('652192577398767639')
-                    .then(() => {
-                        channel.send(askEmbed)})
+                    .then(() => channel.send(askEmbed))
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id); // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
                 }).catch(err => console.log(err));
