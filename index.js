@@ -44,6 +44,7 @@ bot.on("message", async message =>{
 });
 
 bot.on("message", async message =>{
+    let messageArray = message.content.split(" ")
     let args = messageArray.slice(1)
     let question;
     let askEmbed = new Discord.RichEmbed()
