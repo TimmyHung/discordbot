@@ -3,6 +3,7 @@ const botconfig = require("../botconfig.json");
 const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
+const role = require("../role.json");
 
 module.exports.run = async (bot, message, args) =>{
     if(message.member.roles.some(r=>[role.dcadmin, role.admin].includes(r.name))) return message.channel.send("[錯誤]權限不足");
