@@ -55,7 +55,7 @@ bot.on("message", async message =>{
         let timmy = message.guild.members.get(role.timmyhung)
         let askEmbed = new Discord.RichEmbed()
         .setColor(colors.yellow)
-        .setAuthor(`${message.author.username} 問到:`, message.guild.iconURL)
+        .setAuthor(`${message.member.displayName} 問到:`, message.guild.iconURL)
         .setDescription(question)
         .setFooter(`伺服器玩家協助•由 **${timmy.user.tag}** 開發`, bot.user.displayAvatarURL);
 
