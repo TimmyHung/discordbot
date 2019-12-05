@@ -45,7 +45,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     
-    let question = args.join(" ");
+    let question;
     let askEmbed = new Discord.RichEmbed()
         .setColor(colors.darkblue)
         .setAuthor("問題:", message.guild.iconURL)
@@ -76,7 +76,9 @@ bot.on("message", async message =>{
                 })
 
                 await channel.setParent('652192577398767639')
-                    .then(() => channel.send(askEmbed))
+                    .then(() => {
+                        question = args.join(" ");
+                        channel.send(askEmbed)})
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id); // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
                 }).catch(err => console.log(err));
