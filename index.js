@@ -6,6 +6,7 @@ const client = new Discord.Client();
 const role = require("./role.json");
 
 const bot = new Discord.Client({disableEveryone: true});
+var userTickets = new Map();
 
 require("./util/eventHandler")(bot)
 
