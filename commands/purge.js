@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) =>{
     if (args[0] > 100) return message.channel.send("[錯誤]槓你的就說不要超過數字100了")
 
     message.channel.bulkDelete(args[0])
-        .then( messages => message.channel.send(`**成功移除 \`${messages.size}/${args[0]}\` 訊息**`))
+        .then( messages => message.channel.send(`**成功移除 \`${messages.size}\` 訊息**`))
         .then(m => m.delete(5000))
         .catch( error => console.log(error))
 }
