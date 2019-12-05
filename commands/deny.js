@@ -37,7 +37,7 @@ if(!message.member.roles.has(role.dcadmin)){
     accepter.addRole(newbierole)
     accepter.removeRole(role.pending)
 
-    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已通過:x:`)
+    message.channel.send(`用戶:${accepter.user.username} 的暱稱審核已駁回:x:`)
     
     
     message.delete()
