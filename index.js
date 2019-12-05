@@ -100,9 +100,9 @@ bot.on("message", async message =>{
              * either crashing, restarting, etc.. This part will delete ALL of the tickets that follow the format of 
              * "<username>s-ticket" because that was the way we hard-coded. You can modify this obviously.
              */
-            if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + 's-ticket')) {
+            if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + '-問題小房間')) {
                 message.guild.channels.forEach(channel => {
-                    if(channel.name.toLowerCase() === message.author.username + 's-ticket') {
+                    if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
                         channel.delete().then(ch => console.log('刪除頻道 ' + ch.id))
                         .catch(err => console.log(err));
                     }
