@@ -53,7 +53,7 @@ bot.on("message", async message =>{
             }
             else {
                 let guild = message.guild;
-                guild.createChannel(`${message.author.username}-問題小房間`, {
+                const channel = await guild.createChannel(`${message.author.username}-問題小房間`, {
                     type: 'text',
                     permissionOverwrites: [
                         {
@@ -65,7 +65,9 @@ bot.on("message", async message =>{
                                 id: guild.id
                         }
                     ]
-                });message.guild.channels.find("name", `${message.author.username}-問題小房間`).setParent('652192577398767639')
+                })
+
+                await channel.setParent('652192577398767639')
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id); // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
                 }).catch(err => console.log(err));
