@@ -120,10 +120,10 @@ bot.on("message", async message =>{
             
             }
         }
-        if(message.guild.channels.some(channel => channel.name.toLowerCase() == message.author.id + '-問題小房間')){
-            if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
-                channel.setParent('652192637595680768')
-        }}
+        if(message.channel.id = 652192577398767639){
+            console.log("owo")
+
+        }
     });
 
 
