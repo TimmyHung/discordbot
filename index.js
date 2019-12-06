@@ -123,7 +123,7 @@ bot.on("message", async message =>{
         if(message.channel.id = 652192577398767639){
             if(message.channel.id === userTickets.get(message.author.id)) return;;
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
-                channel.setParent('652192637595680768')
+                message.channel.setParent('652192637595680768')
         
         }}
     });
