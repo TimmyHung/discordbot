@@ -91,8 +91,7 @@ bot.on("message", async message =>{
                 }).catch(err => console.log(err));
             }
         }
-        else if(message.content.toLowerCase() === '!solved') { // Closing the ticket.
-            if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
+        else if(message.content.toLowerCase() === '!solved' && userTickets.has(message.author.id)) { // Closing the ticket.
                 if(message.channel.id === userTickets.get(message.author.id)) {
                     message.channel.delete() // Delete the ticket.
                     .then(channel => {
@@ -116,9 +115,9 @@ bot.on("message", async message =>{
                 */
             //小管理判定回復
             
-            
+        //}
             }
-        }
+        
     );
 
 
