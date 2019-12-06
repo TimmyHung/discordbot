@@ -91,7 +91,7 @@ bot.on("message", async message =>{
                 }).catch(err => console.log(err));
             }
         }
-        else if(message.content.toLowerCase() === '!!已解決') { // Closing the ticket.
+        else if(message.content.toLowerCase() === '!solved') { // Closing the ticket.
             if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
                 if(message.channel.id === userTickets.get(message.author.id)) {
                     message.channel.delete() // Delete the ticket.
@@ -107,6 +107,7 @@ bot.on("message", async message =>{
              * "<username>s-ticket" because that was the way we hard-coded. You can modify this obviously.
              */
             if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + '-問題小房間')) {
+                if(message.channel.id != channel.id) return message.reply("這不是你的問題小房間")
                 message.guild.channels.forEach(channel => {
                     if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
                         channel.delete().then(ch => console.log('[問題小房間]刪除頻道 ' + ch.name))
