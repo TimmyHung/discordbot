@@ -89,12 +89,13 @@ bot.on("message", async message =>{
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id) // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
                 }).catch(err => console.log(err));
+                if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
+                    channel.setParent('652192637595680768')
+                  
+                }
             }
         
         }
-        else if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
-            channel.setParent('652192637595680768')
-            }
         else if(message.content.toLowerCase() === '!solved') { // Closing the ticket.
             if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
                 if(message.channel.id === userTickets.get(message.author.id)) {
