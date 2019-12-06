@@ -91,10 +91,10 @@ bot.on("message", async message =>{
                 }).catch(err => console.log(err));
             }
         }
-        else if(message.content.toLowerCase() === '!!solved') { // Closing the ticket.
+        else if(message.content.toLowerCase() === '!!已解決') { // Closing the ticket.
             if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
                 if(message.channel.id === userTickets.get(message.author.id)) {
-                    message.channel.delete('closing ticket') // Delete the ticket.
+                    message.channel.delete() // Delete the ticket.
                     .then(channel => {
                         console.log("刪除頻道 " + channel.name);
                         userTickets.delete(message.author.id);
