@@ -123,7 +123,7 @@ bot.on("message", async message =>{
         else if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))) {
             message.guild.channels.forEach(channel => {
                 if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
-                    channel.setParent('652192577398767639')
+                    channel.setParent('652192637595680768')
                 }
                     
             })
