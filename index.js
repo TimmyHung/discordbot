@@ -111,11 +111,11 @@ bot.on("message", async message =>{
                 message.guild.channels.forEach(channel => {
                     if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
                         channel.delete().then(ch => console.log('Deleted Channel ' + ch.id))
-                        userTickets.delete(message.author.id)
-                        .catch(err => console.log(err));
+                        userTickets.delete(message.author.id);
                         
-                    }
-                });
+                        }
+                    }).catch(err => console.log(err))
+                
             }
         }
     });
