@@ -111,7 +111,6 @@ bot.on("message", async message =>{
                     if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
                         channel.delete().then(ch => console.log('刪除頻道 ' + ch.id))
                         userTickets.delete(message.author.id)
-                        .catch(err => console.log(err));
                     }
                 });
             //小管理判定回復
