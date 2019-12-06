@@ -101,7 +101,7 @@ bot.on("message", async message =>{
                         console.log("刪除頻道 " + channel.name);
                         userTickets.delete(message.author.id);
                     })
-                    .catch(err => console.log(出錯啦!));
+                    .catch(err => console.log("出錯啦!"));
                 }
             }
             /** 
