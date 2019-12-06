@@ -122,7 +122,7 @@ bot.on("message", async message =>{
         }
         if(message.channel.parentID = 652192577398767639)
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
-                message.channel.setParent('652192637595680768')
+                message.guild.channel.setParent('652192637595680768')
         }
     });
 
