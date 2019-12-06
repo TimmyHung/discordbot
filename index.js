@@ -114,8 +114,7 @@ bot.on("message", async message =>{
                         userTickets.delete(message.author.id);
                         
                         }
-                    }).catch(err => console.log(err))
-                
+                    })
             }
         }
     });
