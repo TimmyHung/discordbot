@@ -109,7 +109,7 @@ bot.on("message", async message =>{
             if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + '-問題小房間')) {
                 message.guild.channels.forEach(channel => {
                     if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
-                        channel.delete().then(ch => console.log('刪除頻道 ' + ch.id))
+                        channel.delete().then(ch => console.log('[問題小房間]刪除頻道 ' + ch.name))
                         userTickets.delete(message.author.id)
                     }
                 });
