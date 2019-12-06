@@ -88,8 +88,6 @@ bot.on("message", async message =>{
                     .then(() => channel.send(askEmbed))
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id) // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
-                }).then(channel => {
-                    console.log("創建頻道" + channel.name)
                 }).catch(err => console.log(err));
             }
         }
@@ -101,7 +99,6 @@ bot.on("message", async message =>{
                         console.log("刪除頻道 " + channel.name);
                         userTickets.delete(message.author.id);
                     })
-                    .catch(err => console.log("出錯啦!"));
                 }
             }
             /** 
