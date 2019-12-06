@@ -91,13 +91,15 @@ bot.on("message", async message =>{
                 }).catch(err => console.log(err));
             }
         }
-        else if(message.content.toLowerCase() === '!solved' && userTickets.has(message.author.id)) { // Closing the ticket.
+        else if(message.content.toLowerCase() === '!solved') { // Closing the ticket.
+            if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
                 if(message.channel.id === userTickets.get(message.author.id)) {
-                    message.channel.delete() // Delete the ticket.
+                    message.channel.delete('closing ticket') // Delete the ticket.
                     .then(channel => {
-                        console.log("刪除頻道 " + channel.name);
+                        console.log("Deleted " + channel.name);
                         userTickets.delete(message.author.id);
                     })
+                    .catch(err => console.log(err));
                 }
             }
             /** 
@@ -105,20 +107,16 @@ bot.on("message", async message =>{
              * either crashing, restarting, etc.. This part will delete ALL of the tickets that follow the format of 
              * "<username>s-ticket" because that was the way we hard-coded. You can modify this obviously.
              */
-           /**   if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + '-問題小房間')) {
+            if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + '-問題小房間')) {
                 message.guild.channels.forEach(channel => {
                     if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
-                        channel.delete().then(ch => console.log('[Ticket]刪除頻道 ' + ch.name))
-                        userTickets.delete(message.author.id)
+                        channel.delete().then(ch => console.log('Deleted Channel ' + ch.id))
+                        .catch(err => console.log(err));
                     }
                 });
-                */
-            //小管理判定回復
-            
-        //}
             }
-        
-    );
+        }
+    });
 
 
 //bot.on("voiceStateUpdate", function(oldMember, newMember){
