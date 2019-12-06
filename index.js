@@ -89,10 +89,7 @@ bot.on("message", async message =>{
                     .then(ch => {
                     userTickets.set(message.author.id, ch.id) // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
                 }).catch(err => console.log(err));
-                if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
-                    channel.setParent('652192637595680768')
-                  
-                }
+                
             }
         
         }
@@ -123,6 +120,10 @@ bot.on("message", async message =>{
             
             }
         }
+        if(message.guild.channels.some(channel => channel.name.toLowerCase() == message.author.id + '-問題小房間')){
+            if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
+                channel.setParent('652192637595680768')
+        }}
     });
 
 
