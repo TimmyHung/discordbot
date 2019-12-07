@@ -47,11 +47,12 @@ bot.on("message", async message =>{
     let args = messageArray
     let question;
     let asknick;
-    let cname = message.guild.channels.some(channel => channel.name.toLowerCase() === '問題小房間-' + asknick)
+    let cname;
 
     if(message.author.bot) return;
     if(message.channel.id === '651080117006762014'){
         asknick = message.member.displayName
+        cname = message.guild.channels.some(channel => channel.name.toLowerCase() === '問題小房間-' + asknick)
         message.delete()
         question = args.join(" ")
         let timmy = message.guild.members.get(role.timmyhung)
@@ -92,7 +93,7 @@ bot.on("message", async message =>{
         
         }
         else if(message.content.toLowerCase() === '!solved') { 
-                if (!message.channel.name.startsWith(`問題小房間-${asknick}`)) {
+                if (message.channel != cname) {
                 message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
                 } else{
                 message.channel.delete() 
