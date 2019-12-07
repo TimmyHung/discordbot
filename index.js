@@ -93,7 +93,7 @@ bot.on("message", async message =>{
         
         }
         else if(message.content.toLowerCase() === '!solved') { 
-                if (message.channel != cname) {
+                if (message.channel.id != cname.id) {
                 message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
                 } else{
                 message.channel.delete() 
