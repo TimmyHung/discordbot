@@ -93,7 +93,7 @@ bot.on("message", async message =>{
         
         }
         else if(message.content.toLowerCase() === '!solved') { 
-                if (!message.channel.name.startsWith(`問題小房間`)) return message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
+                if (!message.channel.name.startsWith(`問題小房間-` + asknick)) return message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
                 message.channel.delete() 
                     .then(channel => {
                         console.log("刪除小房間 " + channel.name);
