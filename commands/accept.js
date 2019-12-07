@@ -11,6 +11,7 @@ module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("648476721200496670")
 
+if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("[錯誤]權限不足");
 if(message.member.roles.some(r=>[role.dcadmin, role.admin].includes(r.name))) return message.channel.send("[錯誤]權限不足");
 if(!message.member.roles.has(role.dcadmin)){ 
 } else if(message.channel.id != 648476721200496670)

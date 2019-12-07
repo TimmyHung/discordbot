@@ -15,7 +15,7 @@ if(!message.member.roles.has(role.dcadmin)){
         return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
 
 //查看指令使用者和BOT是否有權限
-if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("你哪根蔥阿，想叫我做事?還太嫩了點");
+if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("[錯誤]權限不足");
 if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(BAN_MEMBERS)")
 
 //確認禁言原因
