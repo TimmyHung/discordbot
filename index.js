@@ -6,7 +6,6 @@ const client = new Discord.Client();
 const role = require("./role.json");
 
 const bot = new Discord.Client({disableEveryone: true});
-var userTickets = new Map();
 
 require("./util/eventHandler")(bot)
 
@@ -47,6 +46,8 @@ bot.on("message", async message =>{
     let messageArray = message.content.split(" ")
     let args = messageArray
     let question;
+    let asknick = message.member.displayName
+    let cname = message.guild.channels.some(channel => channel.name.toLowerCase() === '問題小房間-' + asknick)
 
     if(message.author.bot) return;
     if(message.channel.id === '651080117006762014'){
@@ -55,18 +56,18 @@ bot.on("message", async message =>{
         let timmy = message.guild.members.get(role.timmyhung)
         let askEmbed = new Discord.RichEmbed()
         .setColor(colors.yellow)
-        .setAuthor(`${message.member.displayName} 問到:`, message.guild.iconURL)
+        .setAuthor(`${asknick} 問到:`, message.guild.iconURL)
         .setDescription(question)
         .setFooter(`玩家官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL);
 
 
         if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
-            channel.name.toLowerCase() === message.author.id + '-問題小房間')) {
-                message.channel.send("[錯誤]你已經有一間問題小房間了!").then(m => m.delete(5000))
+            channel.name.toLowerCase() === '問題小房間-' + asknick)) {
+                message.channel.send("[錯誤]你已經有一間問題小房間了").then(m => m.delete(5000))
             }
             else {
                 let guild = message.guild;
-                const channel = await guild.createChannel(`${message.author.username}-問題小房間`, {
+                const channel = await guild.createChannel(`問題小房間-${asknick}`, {
                     type: 'text',
                     permissionOverwrites: [
                         {
@@ -85,41 +86,19 @@ bot.on("message", async message =>{
                 })
 
                 await channel.setParent('652192577398767639')
-                    .then(() => channel.send(askEmbed))
-                    .then(ch => {
-                    userTickets.set(message.author.id, ch.id) // Once our channel is created, we set the map with a key-value pair where we map the user's id to their ticket's channel id, indicating that they have a ticket opened.
-                }).catch(err => console.log(err));
-                
+                    .then(() => channel.send(askEmbed))  
             }
         
         }
-        else if(message.content.toLowerCase() === '!solved') { // Closing the ticket.
-            if(userTickets.has(message.author.id)) { // Check if the user has a ticket by checking if the map has their ID as a key.
-                if(message.channel.id === userTickets.get(message.author.id)) {
-                    message.channel.delete('closing ticket') // Delete the ticket.
+        else if(message.content.toLowerCase() === '!solved') { 
+                if(message.channel.name === cname) {
+                    message.channel.delete() 
                     .then(channel => {
-                        console.log("Deleted " + channel.name);
-                        userTickets.delete(message.author.id);
+                        console.log("刪除小房間 " + channel.name);
                     })
                     .catch(err => console.log(err));
                 }
             }
-            /** 
-             * Here we will check the server to see if there were additional tickets created that the bot may have missed due to 
-             * either crashing, restarting, etc.. This part will delete ALL of the tickets that follow the format of 
-             * "<username>s-ticket" because that was the way we hard-coded. You can modify this obviously.
-             */
-            if(message.guild.channels.some(channel => channel.name.toLowerCase() === message.author.username + '-問題小房間')) {
-                message.guild.channels.forEach(channel => {
-                    if(channel.name.toLowerCase() === message.author.username + '-問題小房間') {
-                        channel.delete().then(ch => console.log('Deleted Channel ' + ch.name))
-                        userTickets.delete(message.author.id);
-                        }
-                    
-                    })
-            
-            }
-        }
         /**if(message.guild.channels.id = 652192577398767639)
             console.log("owo")
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
