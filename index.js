@@ -62,7 +62,7 @@ bot.on("message", async message =>{
         .setFooter(`玩家官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL);
 
 
-        if(userTickets.has(message.author.id) || message.guild.channels.some(channel =>
+        if(message.guild.channels.some(channel =>
             channel.name.toLowerCase() === '問題小房間-' + asknick)) {
                 message.channel.send("[錯誤]你已經有一間問題小房間了").then(m => m.delete(5000))
             }
