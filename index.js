@@ -90,12 +90,12 @@ bot.on("message", async message =>{
 
                 await channel.setParent('652192577398767639')
                     .then(() => channel.send(askEmbed))
-                ticketchannel = guild.channels.find(channel => channel.name === '問題小房間-' + asknick)
+                //ticketchannel = guild.channels.find(channel => channel.name === '問題小房間-' + asknick)
             }
         
         }
         else if(message.content.toLowerCase() === '!solved') { 
-                if (message.channel.name != '問題小房間-' + asknick) return message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
+                if (message.channel.name != channel) return message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
                 message.channel.delete() 
                     .then(channel => {
                         console.log("刪除頻道 " + channel.name);
