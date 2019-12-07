@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) =>{
     .setAuthor("該怎麼創建問題小房間", message.guild.iconURL)
     .addField("想要直接取得官方協助又不想讓其他人知道?")
     .addField("更換帳號、密碼遺失、外掛舉報卻懶得跑粉專?")
-    .addField("在下方輸入你的問題，我們會在最短時間內回覆你")
+    .addField("在下方輸入你的問題，我們會在最短時間內回覆你!")
     .setFooter(`玩家&官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL)
     message.channel.send(Membed)
 }
