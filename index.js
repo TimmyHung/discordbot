@@ -92,14 +92,16 @@ bot.on("message", async message =>{
         
         }
         else if(message.content.toLowerCase() === '!solved') { 
-                if(message.channel.name == `問題小房間-${asknick}`) {
-                    message.channel.delete() 
+                if (!message.channel.name.startsWith(`問題小房間-${asknick}`)) {
+                message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
+                } else{
+                message.channel.delete() 
                     .then(channel => {
                         console.log("刪除小房間 " + channel.name);
                     })
                     .catch(err => console.log(err));
-                }
-            }
+                    }
+        }
         /**if(message.guild.channels.id = 652192577398767639)
             console.log("owo")
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
