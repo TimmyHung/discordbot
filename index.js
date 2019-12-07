@@ -106,7 +106,7 @@ bot.on("message", async message =>{
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
                 message.guild.channels.setParent('652192637595680768')
             }*/
-    });
+    );
 
 
 
