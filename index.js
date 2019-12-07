@@ -98,6 +98,7 @@ bot.on("message", async message =>{
                 await channel.setParent('652192577398767639')
                     .then(() => channel.send(askEmbed)) 
                     .then(() => channel.setTopic('此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 !solved'))
+                    .then(() => logchannel.send(logEmbed)
             }
         
         }
