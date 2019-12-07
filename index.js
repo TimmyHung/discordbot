@@ -59,7 +59,7 @@ bot.on("message", async message =>{
         .setAuthor(`${asknick} 問到:`, message.author.displayAvatarURL)
         .setDescription(question)
         .addField("小提醒:", "此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 !solved")
-        .setFooter(`玩家官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL);
+        .setFooter(`玩家&官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL);
 
         if(message.member.roles.has(role.helper))
         return message.channel.send(`[錯誤]你是回覆助手應該直接找 ${timmy.user.tag} 解決問題`).then(m => m.delete(5000))
