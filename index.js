@@ -94,7 +94,7 @@ bot.on("message", async message =>{
         
         }
         else if(message.content.toLowerCase() === '!solved')
-        ticketchannel = guild.channels.find(channel => channel.name === '問題小房間-' + asknick) 
+        ticketchannel = message.guild.channels.find(channel => channel.name === '問題小房間-' + asknick) 
                 { 
                 if (message.channel.name != ticketchannel) return message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
                 message.channel.delete() 
