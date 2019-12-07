@@ -70,7 +70,7 @@ bot.on("message", async message =>{
         .setFooter(`玩家&官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL)
 
         if(message.member.roles.has(role.helper))
-        return message.channel.send(`[錯誤]你是回覆助手應該直接找 ${timmy.user.tag} 解決問題`).then(m => m.delete(5000))
+        return message.channel.send(`[錯誤]你是回覆助手應該直接找 ${timmy.user.tag} 解決問題`).then(m => m.delete(3000))
         if(message.guild.channels.some(channel =>
             channel.name.toLowerCase() === '問題小房間-' + asknick)) {
                 message.channel.send("[錯誤]你已經有一間問題小房間了").then(m => m.delete(5000))
