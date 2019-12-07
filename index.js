@@ -101,7 +101,7 @@ bot.on("message", async message =>{
                     .catch(err => console.log(err));
                     }
         }
-        if(message.channel.parent_id = '652192577398767639')
+        if(message.channel.parentID = '652192577398767639')
             console.log("owo")
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
                 message.guild.channels.setParent('652192637595680768')
