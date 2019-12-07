@@ -47,13 +47,10 @@ bot.on("message", async message =>{
     let args = messageArray
     let question;
     let asknick;
-    let cname;
-    let ticketchannel;
 
     if(message.author.bot) return;
     if(message.channel.id === '651080117006762014'){
         asknick = message.member.displayName
-        cname = message.guild.channels.some(channel => channel.name.toLowerCase() === '問題小房間-' + asknick)
         message.delete()
         question = args.join(" ")
         let timmy = message.guild.members.get(role.timmyhung)
@@ -89,27 +86,27 @@ bot.on("message", async message =>{
                 })
 
                 await channel.setParent('652192577398767639')
-                    .then(() => channel.send(askEmbed))
+                    .then(() => channel.send(askEmbed))  
             }
         
         }
-        else if(message.content.toLowerCase() === '!solved')
-        ticketchannel = message.guild.channels.find(channel => channel.name === '問題小房間-' + asknick) 
-                { 
-                if (message.channel.id != ticketchannel.id) return message.delete().then(() => message.channel.send("[錯誤]這並不是你的問題小房間"))
+        else if(message.content.toLowerCase() === '!solved') { 
+                if (!message.channel.name.startsWith(`問題小房間-${asknick}`)) {
+                 return message.delete()
+                } else{
                 message.channel.delete() 
                     .then(channel => {
-                        console.log("刪除頻道 " + channel.name);
+                        console.log("刪除小房間 " + channel.name);
                     })
                     .catch(err => console.log(err));
                     }
         }
-        /**if(message.guild.channels.id = 652192577398767639)
+        if(message.channel.parent_id = '652192577398767639')
             console.log("owo")
             if(message.member.roles.some(r=>[role.dcadmin, role.admin, role.owner].includes(r.name))){
                 message.guild.channels.setParent('652192637595680768')
-            }*/
-    );
+            }
+    });
 
 
 
