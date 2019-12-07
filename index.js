@@ -80,13 +80,14 @@ bot.on("message", async message =>{
                         },
                         {
                                 allow: 'VIEW_CHANNEL',
-                                id: role.dcadmin
+                                id: role.helper
                         }
                     ]
                 })
 
                 await channel.setParent('652192577398767639')
-                    .then(() => channel.send(askEmbed))  
+                    .then(() => channel.send(askEmbed)) 
+                    .then(() => channel.setTopic('此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 !solved'))
             }
         
         }
@@ -101,9 +102,10 @@ bot.on("message", async message =>{
                     .catch(err => console.log(err));
                     }
         }
-        if(message.channel.parentID == '652192577398767639' && message.member.roles.has(role.dcadmin))
+        if(message.channel.parentID == '652192577398767639' && message.member.roles.has(role.helper))
             message.channel.setParent('652192637595680768')
-            console.log("owo")
+        if(message.channel.parentID == '652192637595680768' && !message.member.roles.has(role.helper))
+            message.channel.setParent('652192577398767639')
     });
 
 
