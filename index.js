@@ -96,13 +96,13 @@ bot.on("message", async message =>{
                 } else{
                 message.channel.delete() 
                     .then(channel => {
-                        console.log("刪除小房間 " + channel.name);
+                        console.log("刪除頻道 " + channel.name);
                     })
                     .catch(err => console.log(err));
                     }
         }
         if(message.channel.parentID == '652192577398767639' && message.member.roles.has(role.dcadmin))
-            message.guild.channels.setParent('652192637595680768')
+            message.channel.setParent('652192637595680768')
             console.log("owo")
     });
 
