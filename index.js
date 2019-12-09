@@ -126,15 +126,13 @@ bot.on("message", async message =>{
 bot.on("voiceStateUpdate", function(oldMember, newMember){
     let joinChannel = newMember.voiceChannel
     let leaveChannel = oldMember.voiceChannel
-    let channel = client.channels.get('630007478008020992')
+    let channel = message.guild.channels.get('630007478008020992')
     
-    if(joinChannel == channel){
+    if(joinChannel.id == '630007478008020992')
         return newMember.addRole(role.harry)
-    }
     else{
         newMember.removeRole(role.harry)
     }
-
 })
 
 
