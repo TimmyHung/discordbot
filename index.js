@@ -127,11 +127,15 @@ bot.on("voiceStateUpdate", function(oldMember, newMember){
     let joinChannel = newMember.voiceChannel
     let leaveChannel = oldMember.voiceChannel
     
-    if(joinChannel.id == '630007478008020992')
+    if(joinChannel == undefined){
+     return newMember.removeRole(role.harry)
+    
+    }else if(joinChannel.id == '630007478008020992'){
         return newMember.addRole(role.harry)
-    else{
+    }else{
         newMember.removeRole(role.harry)
     }
+    
 })
 
 
