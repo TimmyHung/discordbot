@@ -100,7 +100,7 @@ bot.on("message", async message =>{
                     .then(() => channel.send(askEmbed)) 
                     .then(() => channel.setTopic('此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 !solved'))
                     .then(() => logchannel.send(logEmbed))
-                    .then(() => askChannel.send(`[提示]問題小房間創建成功(${channel})`)).then(m => m.delete=(10000))
+                    .then(() => askChannel.send(`[提示]問題小房間創建成功(${channel})`).then(m => m.delete=(10000)))
             }
         
         }
