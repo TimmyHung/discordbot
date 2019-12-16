@@ -1,16 +1,15 @@
 const reqEvent = (event) => require(`../events/${event}`)
-const Discord = require('discord.js');
-const client = new Discord.Client();
 
 module.exports = bot => {
-    client.on('ready', () => {
-    let channel = client.channels.get('656086848627671070');
-    //channel = client.channels.find('name', 'Music');
+    bot.on('ready', () => {
+    console.log(`${bot.user.username} 已上線!`)
 
+    let channel = bot.channels.get('656086848627671070');
+      
     channel.join()
     .then(connection => console.log('Connected'))
     .catch(console.error);
-    
+
     let statuses = [
         "PETTW.ONLINE",
         "P.E.T伺服器",
