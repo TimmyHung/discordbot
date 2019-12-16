@@ -31,7 +31,7 @@ fs.readdir("./commands/", (err, files) =>{
 
 
 bot.on("guildMemberAdd", member => {
-    let timmy = bot.guild.members.get(role.timmyhung)
+    let timmy = bot.users.get(role.timmyhung)
     let channel = bot.channels.get('617046297907560551')
     let rchannel = bot.channels.get('651796953243320333')
     let lchannel = bot.channels.get('651080117006762014')
