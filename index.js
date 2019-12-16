@@ -6,7 +6,7 @@ const client = new Discord.Client();
 const role = require("./role.json");
 
 const bot = new Discord.Client({disableEveryone: true});
-
+let timmy = bot.users.get(role.timmyhung)
 
 require("./util/eventHandler")(bot)
 
