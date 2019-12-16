@@ -29,6 +29,24 @@ fs.readdir("./commands/", (err, files) =>{
 });
 
 
+bot.on("guildMemberAdd", (guild, member) => {
+
+    console.log(member.user.username + " 加入了 " + guild.name);
+    let channel = bot.channels.get('617046297907560551')
+    let rchannel = bot.channels.get('651796953243320333')
+    let lchannel = bot.channels.get('651080117006762014')
+
+    let JemBed = new Discord.RichEmbed()
+    .setColor(colors.green)
+    .setAuthor(`歡迎加入 ${guild.name} Discord 群組`)
+    .setThumbnail(member.displayAvatarURL)
+    .setDescription(`新成員: <@!${member.id}> \n 目前所有頻道皆處於上鎖狀態 \n 請先至 ${rchannel} 閱讀規則 \n 並依照指示開啟 Discord 功能 \n 如果有任何疑問 歡迎善用 ${lchannel}`)
+    .setFooter(`PETTW.ONLINE•由 ${timmy.user.tag} 開發`)
+    
+
+});
+
+
 bot.on("message", async message =>{
     if(message.author.bot || message.channel.type === "dm") return;
     let prefix = botconfig.prefix;
