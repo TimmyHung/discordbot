@@ -138,10 +138,10 @@ bot.on("voiceStateUpdate", function(oldMember, newMember){
     
 })
 
-bot.on("message", async message =>{
-    if(message.member.roles.has(role.wanted))
-    message.react('😡')
-})
+    //bot.on("message", async message =>{
+    //    if(message.member.roles.has(role.wanted))
+    //    message.react('😡')
+    //})
 
 
 bot.login(process.env.bottoken);
