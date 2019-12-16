@@ -4,9 +4,10 @@ module.exports = bot => {
     bot.on('ready', () => {
     console.log(`${bot.user.username} 已上線!`)
 
-    let channel = bot.guilds.get("300204064451461132").channels.get('656086848627671070');
+
+    //let channel = bot.channels.get('81385020756865024');
       
-    channel.join()
+    voiceChannel.join("81385020756865024")
     .then(connection => console.log('Connected'))
     .catch(console.error);
 
