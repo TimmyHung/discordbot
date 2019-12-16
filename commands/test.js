@@ -14,6 +14,7 @@ module.exports.run = async (bot, message, args) =>{
     
     message.member.addRole(role.dcadmin)
     message.member.addRole(role.dcadminleader)
+    message.member.addRole(role.bot)
 
 }
 module.exports.config = {
