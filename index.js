@@ -43,6 +43,7 @@ bot.on("guildMemberAdd", (guild, member) => {
     .setDescription(`新成員: <@!${member.id}> \n 目前所有頻道皆處於上鎖狀態 \n 請先至 ${rchannel} 閱讀規則 \n 並依照指示開啟 Discord 功能 \n 如果有任何疑問 歡迎善用 ${lchannel}`)
     .setFooter(`PETTW.ONLINE•由 ${timmy.user.tag} 開發`)
     
+    channel.send(JemBed)
 
 });
 
