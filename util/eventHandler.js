@@ -4,7 +4,7 @@ module.exports = bot => {
     bot.on('ready', () => {
     console.log(`${bot.user.username} 已上線!`)
 
-    let channel = guild.channels.get('656086848627671070');
+    let channel = bot.guilds.get("300204064451461132").channels.get('656086848627671070');
       
     channel.join()
     .then(connection => console.log('Connected'))
