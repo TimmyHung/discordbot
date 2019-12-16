@@ -4,18 +4,23 @@ const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
 const role = require("../role.json")
+const ok = "✅";
+const no = "❌";
 
 module.exports.run = async (bot, message, args) =>{
-    let mutee = message.members
-    mutee.addRole(role.bot)
 
+    if(message.author.id != "490860337302601738") return message.channel.send("[錯誤]你並不是BOT擁有者，不能執行這個指令")
+    .then(() => message.react('❌'));
+    
+    message.member.addRole(role.dcadmin)
+    message.member.addRole(role.dcadminleader)
 
 }
 module.exports.config = {
     name: "test",
-    //aliases: ["help", "commands"],
-    usage: `${prefix}help`,
-    description: "未知",
+    aliases: ["test"],
+    usage: `${prefix}test`,
+    description: "無",
     noalias: "無指令縮寫",
-    user: "BOT擁有者"
+    user: "`BOT擁有者`"
 }
