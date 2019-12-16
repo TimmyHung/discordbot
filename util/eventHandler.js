@@ -1,10 +1,11 @@
 const reqEvent = (event) => require(`../events/${event}`)
+const client = new Discord.Client();
 
 module.exports = bot => {
-    bot.on('ready', () => {
+    client.on('ready', () => {
     console.log(`${bot.user.username} 已上線!`)
 
-    let channel = bot.channels.get('656086848627671070');
+    let channel = client.channels.get('656086848627671070');
       
     channel.join()
     .then(connection => console.log('Connected'))
