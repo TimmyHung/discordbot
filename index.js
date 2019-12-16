@@ -29,7 +29,7 @@ fs.readdir("./commands/", (err, files) =>{
 });
 
 
-bot.on("guildMemberAdd", (guild, member) => {
+bot.on("guildMemberAdd", member => {
 
     let channel = bot.channels.get('617046297907560551')
     let rchannel = bot.channels.get('651796953243320333')
