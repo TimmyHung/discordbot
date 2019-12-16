@@ -6,10 +6,10 @@ module.exports = bot => {
     console.log(`${bot.user.username} 已上線!`)
     //bot.user.setActivity("智障獨角獸", {type: "WATCHING"})
 
-    const channel = client.channels.get("656086848627671070");
+    let channel = client.channels.get('656086848627671070');
     if (!channel) return console.error("指揮中心頻道不存在");
     channel.join().then(connection => {
-      console.log("Successfully connected.");
+      console.log("已進入指揮中心!");
     }).catch(e => {
       console.error(e);
     })
