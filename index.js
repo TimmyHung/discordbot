@@ -7,6 +7,8 @@ const role = require("./role.json");
 
 const bot = new Discord.Client({disableEveryone: true});
 
+let timmy = message.guild.members.get(role.timmyhung)
+
 require("./util/eventHandler")(bot)
 
 const fs = require("fs");
@@ -42,7 +44,7 @@ bot.on("guildMemberAdd", member => {
     .setDescription(`新成員: <@!${member.id}> \n 目前所有頻道皆處於上鎖狀態 \n 請先至 ${rchannel} 閱讀規則 \n 並依照指示開啟 Discord 功能 \n 如果有任何疑問 歡迎善用 ${lchannel}`)
     .setFooter(`PETTW.ONLINE•由 ${timmy.user.tag} 開發`)
     
-    
+
     channel.send(JemBed)
 
 });
@@ -73,7 +75,6 @@ bot.on("message", async message =>{
         asknick = message.member.displayName
         message.delete()
         question = args.join(" ")
-        let timmy = message.guild.members.get(role.timmyhung)
         let askChannel = message.guild.channels.get("651080117006762014")
         let askEmbed = new Discord.RichEmbed()
         .setColor(colors.yellow)
