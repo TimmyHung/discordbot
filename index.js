@@ -28,34 +28,6 @@ fs.readdir("./commands/", (err, files) =>{
     });
 });
 
-client.on('ready', () => {
-    console.log(`${client.user.username} 已上線!`)
-
-    let channel = client.channels.get('656086848627671070');
-      
-    channel.join()
-    .then(connection => console.log('Connected'))
-    .catch(console.error);
-
-    let statuses = [
-        "PETTW.ONLINE",
-        "P.E.T伺服器",
-        "!!help 查看指令幫助",
-        `目前有 ${client.users.size} 位成員`,
-        "獨角獸都智障 乾! ",
-        "你全家都毛豆 乾!",
-        "MiMu!!"
-
-
-    ] 
-
-    setInterval(function(){
-        let status = statuses[Math.floor(Math.random() * statuses.length)]
-        bot.user.setActivity(status, {type: "PLAYING"})
-    }, 5000)
-})
-
-
 
 bot.on("message", async message =>{
     if(message.author.bot || message.channel.type === "dm") return;
