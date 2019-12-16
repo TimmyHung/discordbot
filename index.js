@@ -6,7 +6,6 @@ const client = new Discord.Client();
 const role = require("./role.json");
 
 const bot = new Discord.Client({disableEveryone: true});
-let timmy = bot.users.get(role.timmyhung)
 
 require("./util/eventHandler")(bot)
 
@@ -64,6 +63,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     let messageArray = message.content.split(" ")
+    let timmy = message.guild.members.get("490860337302601738")
     let args = messageArray
     let logchannel = message.guild.channels.get("652930636570689576")
     let question;
