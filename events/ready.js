@@ -2,10 +2,17 @@ const Discord = require("discord.js")
 
 
 module.exports = bot => {
-    let channel = client.channels.get('656086848627671070');
-    channel.join()
     console.log(`${bot.user.username} 已上線!`)
     //bot.user.setActivity("智障獨角獸", {type: "WATCHING"})
+
+    const channel = client.channels.get("656086848627671070");
+    if (!channel) return console.error("指揮中心頻道不存在");
+    channel.join().then(connection => {
+      console.log("Successfully connected.");
+    }).catch(e => {
+      console.error(e);
+    })
+
 
     let statuses = [
         "PETTW.ONLINE",
