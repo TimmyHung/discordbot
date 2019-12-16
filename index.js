@@ -40,7 +40,7 @@ bot.on("guildMemberAdd", member => {
     .setColor(colors.green)
     .setAuthor(`歡迎加入 P.E.T伺服器 Discord 群組`)
     .setThumbnail(member.user.displayAvatarURL)
-    .setDescription(`新成員: <@!${member.id}> \n 目前所有頻道皆處於上鎖狀態 \n 請先至 ${rchannel} 閱讀規則 \n 並依照指示開啟 Discord 功能 \n 如果有任何疑問 歡迎善用 ${lchannel}`)
+    .setDescription(`新成員: <@!${member.id}> \n\n 目前所有頻道皆處於上鎖狀態 \n\n 請先至 ${rchannel} 閱讀規則 \n\n 並依照指示開啟 Discord 功能 \n\, 如果有任何疑問 歡迎使用 ${lchannel}`)
     .setFooter(`PETTW.ONLINE•由 ${timmy.tag} 開發`)
     
 
