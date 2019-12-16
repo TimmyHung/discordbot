@@ -31,7 +31,7 @@ fs.readdir("./commands/", (err, files) =>{
 
 bot.on("guildMemberAdd", (guild, member) => {
 
-    console.log(member.user.username + " 加入了 " + guild.name);
+    console.log(member.username + " 加入了 " + guild.name);
     let channel = bot.channels.get('617046297907560551')
     let rchannel = bot.channels.get('651796953243320333')
     let lchannel = bot.channels.get('651080117006762014')
