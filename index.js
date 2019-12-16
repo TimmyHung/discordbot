@@ -37,7 +37,7 @@ bot.on("guildMemberAdd", member => {
 
     let JemBed = new Discord.RichEmbed()
     .setColor(colors.green)
-    .setAuthor(`歡迎加入 ${guild.name} Discord 群組`)
+    .setAuthor(`歡迎加入 P.E.T伺服器 Discord 群組`)
     .setThumbnail(member.displayAvatarURL)
     .setDescription(`新成員: <@!${member.id}> \n 目前所有頻道皆處於上鎖狀態 \n 請先至 ${rchannel} 閱讀規則 \n 並依照指示開啟 Discord 功能 \n 如果有任何疑問 歡迎善用 ${lchannel}`)
     .setFooter(`PETTW.ONLINE•由 ${timmy.user.tag} 開發`)
