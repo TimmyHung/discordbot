@@ -1,4 +1,5 @@
 const reqEvent = (event) => require(`../events/${event}`)
+const Discord = require('discord.js');
 const client = new Discord.Client();
 
 module.exports = bot => {
