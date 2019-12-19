@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) =>{
     if(rolemember.roles.has(roleargs.id))
     await(rolemember.addRole(roleargs.id))
 
-
+}
 module.exports.config = {
     name: "addrole",
     aliases: ["addrole"],
