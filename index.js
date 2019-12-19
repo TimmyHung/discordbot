@@ -44,6 +44,7 @@ bot.on("guildMemberAdd", member => {
     
 
     channel.send(JemBed)
+    member.setNickname(尚未更改暱稱)
 
 });
 
