@@ -20,7 +20,7 @@ module.exports = bot => {
     let statuses = [
         "PETTW.ONLINE",
         "P.E.T伺服器",
-        "!!help 查看指令幫助",
+        "!help 查看指令幫助",
         `目前有 ${bot.users.size} 位成員`,
         "夜夜是智障",
         "新毛豆!",
