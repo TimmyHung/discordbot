@@ -51,6 +51,6 @@ module.exports.config = {
     aliases: ["setname", "setnick"],
     usage: `${prefix}nick <@用戶> <名稱>`,
     description: "更改用戶暱稱",
-    noalias: "無指令縮寫",
+    //noalias: "無指令縮寫",
     user: "`DC小管理`"
 }
