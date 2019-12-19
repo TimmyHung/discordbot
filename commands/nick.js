@@ -24,8 +24,6 @@ if(!mutee) return message.channel.send("[提示]未知用戶名，請確認你�
 let nickname = args.slice(1).join(" ");
 if(!nickname) return message.channel.send("[錯誤]請提供一個暱稱")
 
-let reason = args.slice(2).join(" ")
-if(!reason) reason = "無原因可提供"
 
 
 
@@ -42,7 +40,6 @@ let embed = new Discord.RichEmbed()
 .setAuthor("伺服器紀錄", message.guild.iconURL)
 .addField("操作類別:", "更改暱稱")
 .addField("更改用戶:", mutee.user.tag)
-.addField("更改原因:", reason)
 .addField("更改暱稱:", nickname)
 .addField("操作人員:", message.author.tag)
 .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
