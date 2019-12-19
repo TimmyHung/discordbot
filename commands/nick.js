@@ -18,7 +18,7 @@ if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin
 if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(MANAGE_ROLE)")
 
 let mutee = message.mentions.members.first() || message.guild.members.get(args[0]);
-if(!mutee) return message.channel.send("[提示]未知用戶名，請確認你有正確 @用戶，或是 `!!help unmute` 查看指令說明")
+if(!mutee) return message.channel.send("[提示]未知用戶名，請確認你有正確 @用戶，或是 `!!help nick` 查看指令說明")
         .then(() => message.react('❌'));
 
 let nickname = args.slice(1).join(" ");
@@ -47,8 +47,8 @@ sChannel.send(embed)
 
 }
 module.exports.config = {
-    name: "setnick",
-    aliases: ["setname", "nick"],
+    name: "nick",
+    aliases: ["setname", "setnick"],
     usage: `${prefix}nick <@用戶> <名稱>`,
     description: "更改用戶暱稱",
     noalias: "無指令縮寫",
