@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) =>{
     let actionarg;
     let role = args.slice(1).join(" ");
     if(!role) return message.channel.send("[錯誤]未知的身分組名稱")
-    let roleargs = message.guild.roles.find(name, role);
+    let roleargs = message.guild.roles.find(`name`, role);
     let rolemember = message.mentions.members.first() || message.guild.members.get(args[0])
     if(!rolemember) return message.channel.send("[錯誤]未知的用戶名稱")
 
