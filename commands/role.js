@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) =>{
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
     
-        let sChannel = message.guild.channels.find(c => c.name === "tut-modlogs")
+        let sChannel = message.guild.channels.get("649553237384495104")
         sChannel.send(embed)
 
 }
