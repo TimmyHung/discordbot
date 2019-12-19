@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) =>{
     }
 
     let embed = new Discord.RichEmbed()
-    .setColor(colours.redlight)
+    .setColor(colors.red)
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Moderation:", "Addrole")
     .addField("Mutee:", rMember.user.username)
