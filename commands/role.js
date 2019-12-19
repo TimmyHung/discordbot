@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) =>{
     if(!message.member.roles.has(reqrole.admin)) return message.channel.send("[錯誤]權限不足")
 
     let action = args.join(" ");
-    if(!action) return message.channel.send("[錯誤]指令用法不正確，是要 add 或是 remove 身分組?")
+    if(action !== 'add' || 'remove') return message.channel.send("[錯誤]指令用法不正確，是要 add 或是 remove 身分組?")
     let actionarg;
     let role = args.slice(1).join(" ");
     if(!role) return message.channel.send("[錯誤]請輸入身分組名稱")
