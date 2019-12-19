@@ -11,7 +11,8 @@ module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("648476721200496670")
 
-if(!message.member.roles.has(role.admin) || !message.member.roles.has(role.dcadmin)) return message.channel.send("[錯誤]權限不足");
+if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin)) {
+}else return message.channel.send("[錯誤]權限不足");
 if(!message.member.roles.has(role.dcadmin)){ 
 } else if(message.channel.id != 648476721200496670)
         return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)

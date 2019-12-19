@@ -8,10 +8,11 @@ const role = require("../role.json");
 module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("557512829327114250")
-if(!message.member.roles.has(role.admin) || !message.member.roles.has(role.dcadmin)) return message.channel.send("[錯誤]權限不足");
-if(!message.member.roles.has(role.dcadmin)){ 
-} else if(message.channel.id != 557512829327114250)
-        return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
+if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin)) {
+}else return message.channel.send("[錯誤]權限不足");
+// if(!message.member.roles.has(role.dcadmin)){ 
+// } else if(message.channel.id != 557512829327114250)
+//         return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
 
 if(!message.guild.me.hasPermission("KICK_MEMBERS")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(KICK_MEMBERS)")
   
