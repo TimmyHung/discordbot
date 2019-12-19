@@ -10,7 +10,7 @@ const reqrole = require("../role.json");
 module.exports.run = async (bot, message, args) =>{
     if(!message.member.roles.has(reqrole.admin)) return message.channel.send("[錯誤]權限不足")
 
-    let action = args.join(" ");
+    let action = args.join("");
     if(action == 'add'){
     }else if(action == 'remove'){
     }else return message.channel.send("[錯誤]指令用法不正確，是要 add 或是 remove 身分組?")
