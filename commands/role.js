@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) =>{
     let rolemember = message.mentions.members.first() || message.guild.members.get(args[0])
 
     message.delete()
-    if(action != add || remove) {
+    if(!action) {
         return message.channel.send("[錯誤]指令用法不正確，是要 add 或是 remove 身分組?")
     }else 
         if(action === add){
