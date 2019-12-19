@@ -5,7 +5,6 @@ const superagent = require("superagent");
 const prefix = botconfig.prefix
 
 module.exports.run = async (bot, message, args) =>{
-    if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("我把拔還沒把我設定好，你別想叫我做事!");
     if(args[0]){
         let command = args[0];
         if(bot.commands.has(command)){
