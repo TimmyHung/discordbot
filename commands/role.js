@@ -3,12 +3,12 @@ const botconfig = require("../botconfig.json");
 const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix;
-const role = require("../role.json");
+const reqrole = require("../role.json");
 
 //❌
 
 module.exports.run = async (bot, message, args) =>{
-    if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]權限不足")
+    if(!message.member.roles.has(reqrole.admin)) return message.channel.send("[錯誤]權限不足")
 
     let action = args.join(" ");
     if(!action) return message.channel.send("[錯誤]指令用法不正確，是要 add 或是 remove 身分組?")
