@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) =>{
             var SHembed = new Discord.RichEmbed()
             .setAuthor("P.E.T伺服器指令介紹", message.guild.iconURL)
             .setColor(colors.black)
-            .setDescription(`**BOT指令前綴:** ${prefix}\n\n**查詢指令:** ${command.config.name}\n**使用方式:** ${command.config.usage  || "無"}\n**指令縮寫: **${command.config.noalias || command.config.aliases}\n**指令介紹:** ${command.config.description || "無"}\n**適用對象:** ${command.config.user || "`每一個人`"}`)
+            .setDescription(`**BOT指令前綴:** ${prefix}\n\n**查詢指令:** ${command.config.name}\n**使用方式:** ${command.config.usage  || "無"}\n**指令別名: **${command.config.noalias || command.config.aliases}\n**指令介紹:** ${command.config.description || "無"}\n**適用對象:** ${command.config.user || "`每一個人`"}`)
             .setTimestamp()
             .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
             message.channel.send(SHembed);
