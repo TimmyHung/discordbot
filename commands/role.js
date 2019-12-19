@@ -20,9 +20,9 @@ module.exports.run = async (bot, message, args) =>{
     if(!rolemember) return message.channel.send("[錯誤]未知的用戶名稱")
 
         message.delete()
-        if(action === add)
+        if(action === 'add')
             return rolemember.addRole(roleargs.id)
-        if(action === false)
+        if(action === 'false')
             return rolemember.removeRole(roleargs.id)
         }
 
