@@ -36,13 +36,16 @@ mutee.setNickname(nickname).then(() => {
 //發送紀錄訊息
 
 let embed = new Discord.RichEmbed()
-.setColor(colors.darkgreen)
-.setAuthor("伺服器紀錄", message.guild.iconURL)
-.addField("操作類別:", "更改暱稱")
-.addField("更改用戶:", mutee.user.tag)
-.addField("更改暱稱:", nickname)
-.addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
+.setColor(colors.orange)
+.setColor(colors.red)
+.setThumbnail(banMember.user.displayAvatarURL)
+.setAuthor(`${message.guild.name} 社群紀錄`, message.guild.iconURL)
+.setDescription(`**操作類別:** 更改暱稱\n**用戶:** ${banMember.user.tag}\n**更改暱稱:** ${nickname}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
+// .addField("操作類別:", "更改暱稱")
+// .addField("更改用戶:", mutee.user.tag)
+// .addField("更改暱稱:", nickname)
+// .addField("操作人員:", message.author.tag)
+// .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
 
 let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
 sChannel.send(embed)
