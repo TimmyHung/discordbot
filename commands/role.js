@@ -8,6 +8,7 @@ const reqrole = require("../role.json");
 //❌
 
 module.exports.run = async (bot, message, args) =>{
+    message.delete()
     if(!message.member.roles.has(reqrole.admin)) return message.channel.send("[錯誤]權限不足")
     if(!message.guild.me.hasPermission(["MANAGE_ROLES", "ADMINISTRATOR"])) return message.channel.send("[錯誤]我並沒有足夠的權限(MANAGE_ROLES)")
     
@@ -22,30 +23,30 @@ module.exports.run = async (bot, message, args) =>{
 
 
     if(rMember.roles.has(role.id)) {
-        return message.channel.send(`[錯誤]${rMember.displayName}, 已經有這個身分組了!`).then(m => m.delete(5000))
+        return message.channel.send(`[錯誤]${rMember.displayName} 已經有這個身分組了!`).then(m => m.delete(5000))
     } else {
         await rMember.addRole(role.id).catch(e => console.log(e.message))
         message.channel.send(`[訊息]身分組:${role.name} 以新增給用戶 ${rMember.displayName}`).then(m => m.delete(5000))
     }
 
     let embed = new Discord.RichEmbed()
-    .setColor(colors.red)
-    .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-    .addField("Moderation:", "Addrole")
-    .addField("Mutee:", rMember.user.username)
-    .addField("Moderator:", message.author.username)
-    .addField("Reason:", reason)
-    .addField("Date:", message.createdAt.toLocaleString())
+    .setColor(colors.orange)
+    .setAuthor(`${message.guild.name} 社群紀錄`, message.guild.iconURL)
+    .addField("操作類別:", "新增身分組")
+    .addField("用戶:", rMember.user.username)
+    .addField("原因:", reason)
+    .addField("操作人員:", message.author.username)
+    .addField("執行日期:", message.createdAt.toLocaleString())
     
-        let sChannel = message.guild.channels.get("649553237384495104")
+        let sChannel = message.guild.channels.get("557512829327114250")
         sChannel.send(embed)
 
 }
 module.exports.config = {
     name: "addrole",
-    aliases: ["addrole"],
-    usage: `${prefix}role <@用戶> <身分組>`,
-    description: "新增用戶的身分組",
-    noalias: "無指令縮寫",
+    aliases: ["addrole","ar"],
+    usage: `${prefix}addrole <@用戶> <身分組>`,
+    description: "新增身分組給某位用戶",
+    //noalias: "無指令縮寫",
     user: "`全能管理`"
 }
