@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, args) =>{
     .addField("用戶:", rMember.user.username)
     .addField("原因:", reason)
     .addField("操作人員:", message.author.username)
-    .addField("執行日期:", message.createdAt.toLocaleString())
+    .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }))
     
         let sChannel = message.guild.channels.get("557512829327114250")
         sChannel.send(embed)
