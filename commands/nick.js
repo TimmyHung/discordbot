@@ -37,10 +37,9 @@ mutee.setNickname(nickname).then(() => {
 
 let embed = new Discord.RichEmbed()
 .setColor(colors.orange)
-.setColor(colors.red)
 .setThumbnail(mutee.user.displayAvatarURL)
-.setAuthor(`${message.guild.name} 社群紀錄`, message.member.displayAvatarURL)
-.setDescription(`**操作類別:** 更改暱稱\n**用戶:** ${mutee.user.tag}\n**更改暱稱:** ${nickname}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
+.setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
+.setDescription(`**操作類別:** 更改暱稱\n**用戶名稱:** ${mutee.user.tag}\n**更改暱稱:** ${nickname}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
 // .addField("操作類別:", "更改暱稱")
 // .addField("更改用戶:", mutee.user.tag)
 // .addField("更改暱稱:", nickname)

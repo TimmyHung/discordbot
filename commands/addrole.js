@@ -31,15 +31,12 @@ module.exports.run = async (bot, message, args) =>{
 
     let embed = new Discord.RichEmbed()
     .setColor(colors.orange)
-    .setAuthor(`${message.guild.name} 社群紀錄`, message.guild.iconURL)
-    .addField("操作類別:", "新增身分組")
-    .addField("用戶:", rMember.user.username)
-    .addField("原因:", reason)
-    .addField("操作人員:", message.author.username)
-    .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }))
+    .setThumbnail(mutee.user.displayAvatarURL)
+    .setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
+    .setDescription(`**操作類別:** 新增身分組\n**用戶名稱:** ${mutee.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
     
-        let sChannel = message.guild.channels.get("557512829327114250")
-        sChannel.send(embed)
+    let punishchannel = message.guild.channels.get("557512829327114250")
+        punishchannel.send(embed)
 
 }
 module.exports.config = {

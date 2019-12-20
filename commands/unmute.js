@@ -41,15 +41,12 @@ mutee.removeRole(muterole.id).then(() => {
 //發送紀錄訊息
 
 let embed = new Discord.RichEmbed()
-.setColor(colors.darkgreen)
-.setAuthor("伺服器撤銷紀錄", message.guild.iconURL)
-.addField("撤銷類別:", "禁止發言")
-.addField("撤銷用戶:", mutee.user.tag)
-.addField("撤銷原因:", reason)
-.addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
+.setColor(colors.orange)
+.setThumbnail(mutee.user.displayAvatarURL)
+.setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
+.setDescription(`**操作類別:** 撤銷禁言\n**用戶名稱:** ${mutee.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
 
-let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
+let punishchannel = message.guild.channels.get("557512829327114250")
 sChannel.send(embed)
 
 }

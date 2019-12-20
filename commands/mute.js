@@ -7,7 +7,7 @@ const role = require("../role.json");
 
 module.exports.run = async (bot, message, args) =>{
 
-let punishchannel = message.guild.channels.get("557512829327114250")
+
 if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin)) {
 }else return message.channel.send("[錯誤]權限不足");
 // if(!message.member.roles.has(role.dcadmin)){ 
@@ -50,16 +50,13 @@ mutee.addRole(muterole.id).then(() => {
 //發送紀錄訊息
 
 let embed = new Discord.RichEmbed()
-.setColor(colors.orange)
-.setAuthor("伺服器懲處紀錄", message.guild.iconURL)
-.addField("懲處類別:", "永久禁止發言")
-.addField("違規用戶:", mutee.user.tag)
-.addField("違規原因:", reason)
-.addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
+.setColor(colors.red)
+.setThumbnail(mutee.user.displayAvatarURL)
+.setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
+.setDescription(`**操作類別:** 永久禁止發言\n**用戶名稱:** ${mutee.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
 
-let sChannel = message.guild.channels.find(c => c.name === "測試頻道")
-sChannel.send(embed)
+let punishchannel = message.guild.channels.get("557512829327114250")
+punishchannel.send(embed)
 
 }
 module.exports.config = {
