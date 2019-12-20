@@ -7,7 +7,6 @@ const role = require("../role.json");
 
 module.exports.run = async (bot, message, args) => {
 
-    let punishchannel = message.guild.channels.get("557512829327114250")
 
     if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin)) {
     }else return message.channel.send("[錯誤]權限不足");
