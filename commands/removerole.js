@@ -22,28 +22,28 @@ module.exports.run = async (bot, message, args) =>{
 
 
 
-    if(rMember.roles.has(role.id)) {
-        return message.channel.send(`[錯誤]${rMember.displayName} 已經有這個身分組了!`).then(m => m.delete(5000))
+    if(!rMember.roles.has(role.id)) {
+        return message.channel.send(`[錯誤]${rMember.displayName} 並沒有這個身分組!`).then(m => m.delete(5000))
     } else {
-        await rMember.addRole(role.id).catch(e => console.log(e.message))
-        message.channel.send(`[訊息]身分組:${role.name} 已新增給用戶 ${rMember.displayName}`).then(m => m.delete(5000))
+        await rMember.removeRole(role.id).catch(e => console.log(e.message))
+        message.channel.send(`[訊息]身分組:${role.name} 已從用戶 ${rMember.displayName} 移除`).then(m => m.delete(5000))
     }
 
     let embed = new Discord.RichEmbed()
     .setColor(colors.orange)
     .setThumbnail(rMember.user.displayAvatarURL)
     .setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
-    .setDescription(`**操作類別:** 新增身分組\n**用戶名稱:** ${rMember.user.tag}\n**身分組:** ${role.name}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
+    .setDescription(`**操作類別:** 移除身分組\n**用戶名稱:** ${rMember.user.tag}\n**身分組:** ${role.name}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
     
     let punishchannel = message.guild.channels.get("557512829327114250")
         punishchannel.send(embed)
 
 }
 module.exports.config = {
-    name: "addrole",
-    aliases: ["addrole","ar"],
-    usage: `${prefix}addrole <@用戶> <身分組>`,
-    description: "新增身分組給某位用戶",
+    name: "removerole",
+    aliases: ["delrole","rr","dr"],
+    usage: `${prefix}removerole <@用戶> <身分組>`,
+    description: "移除身某位用戶的身分組",
     //noalias: "無指令縮寫",
     user: "`全能管理`"
 }
