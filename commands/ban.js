@@ -53,7 +53,7 @@ module.exports.run = async (bot, message, args) => {
     let embed = new Discord.RichEmbed()
         .setColor(colors.red)
         .setThumbnail(banMember.user.displayAvatarURL)
-        .setAuthor(`${message.guild.name} 社群紀錄`, message.guild.iconURL)
+        .setAuthor(`${message.guild.name} 社群紀錄`, message.member.displayAvatarURL)
         .setDescription(`**操作類別:** 永久封鎖\n**用戶:** ${banMember.user.tag}\n**原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
         // .addField("懲處類別:", "永久封鎖")
         // .addField("違規用戶:", banMember.user.tag)
@@ -61,8 +61,8 @@ module.exports.run = async (bot, message, args) => {
         // .addField("操作人員:", message.author.tag)
         // .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }))
 
-    let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
-    sChannel.send(embed)
+    let punishchannel = message.guild.channels.get("557512829327114250")
+    punishchannel.send(embed)
 
 }
 module.exports.config = {
