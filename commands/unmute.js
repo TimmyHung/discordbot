@@ -41,7 +41,7 @@ mutee.removeRole(muterole.id).then(() => {
 //發送紀錄訊息
 
 let embed = new Discord.RichEmbed()
-.setColor(colors.orange)
+.setColor(colors.darkgreen)
 .setThumbnail(mutee.user.displayAvatarURL)
 .setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
 .setDescription(`**操作類別:** 撤銷禁言\n**用戶名稱:** ${mutee.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
