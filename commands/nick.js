@@ -47,8 +47,8 @@ let embed = new Discord.RichEmbed()
 // .addField("操作人員:", message.author.tag)
 // .addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
 
-let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
-sChannel.send(embed)
+
+punishchannel.send(embed)
 
 }
 module.exports.config = {
