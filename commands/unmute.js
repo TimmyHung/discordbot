@@ -45,7 +45,7 @@ let embed = new Discord.RichEmbed()
 .setDescription(`**操作類別:** 撤銷禁言\n**用戶名稱:** ${mutee.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
 
 let punishchannel = message.guild.channels.get("557512829327114250")
-sChannel.send(embed)
+punishchannel.send(embed)
 
 }
 module.exports.config = {
