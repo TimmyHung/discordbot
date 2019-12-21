@@ -60,7 +60,7 @@ module.exports.run = async (bot, message, args) =>{
     .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
 
-    //if(message.member.displayName === "尚未更改暱稱") return verifier.send(adEmbed).then(() => adminchannelchannel.send(failEmbed))
+    //if(message.member.displayName === "尚未更改暱稱") return verifier.send(adEmbed).then(() => adminchannel.send(failEmbed))
 
 
     let nickEmbed = new Discord.RichEmbed()
