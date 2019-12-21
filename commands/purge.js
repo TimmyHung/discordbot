@@ -11,6 +11,8 @@ module.exports.run = async (bot, message, args) =>{
     if(isNaN(args[0])) return message.channel.send("[提示]請輸入要清除的訊息數量(1~100)");
     if (args[0] > 100) return message.channel.send("[錯誤]槓你的就說不要超過數字100了")
 
+message.delete()
+
     message.channel.bulkDelete(args[0])
         .then( messages => message.channel.send(`**成功移除 \`${messages.size}則\` 訊息**`))
         .then(m => m.delete(5000))
