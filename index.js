@@ -64,7 +64,7 @@ bot.on("message", async message =>{
 
 bot.on("message", async message =>{
     let messageArray = message.content.split(" ")
-    let timmy = bot.users.get("490860337302601738")
+    let timmy = message.guild.members.get("490860337302601738")
     let args = messageArray
     let logchannel = message.guild.channels.get("652930636570689576")
     let question;
