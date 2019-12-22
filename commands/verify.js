@@ -39,25 +39,25 @@ module.exports.run = async (bot, message, args) =>{
     //let adEmbed = new Discord.RichEmbed()
     
     //自動駁回訊息
-    .setColor(colors.red)
-    .setAuthor("暱稱審核結果", message.guild.iconURL)
-    .addField("申請用戶:", verifier.user.tag)
-    .addField("用戶暱稱:", verifier.displayName)
-    .addField("審核結果:", "未通過")
-    .addField("駁回原因:", "遭到系統自動駁回，請確認你有詳讀伺服器規則")
-    .addField("用戶須知:", "確認暱稱沒有任何問題後\n可以於相同頻道再次提出申請")
-    .setTimestamp()
-    .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
+    //.setColor(colors.red)
+    //.setAuthor("暱稱審核結果", message.guild.iconURL)
+    //.addField("申請用戶:", verifier.user.tag)
+    //.addField("用戶暱稱:", verifier.displayName)
+    //.addField("審核結果:", "未通過")
+    //.addField("駁回原因:", "遭到系統自動駁回，請確認你有詳讀伺服器規則")
+    //.addField("用戶須知:", "確認暱稱沒有任何問題後\n可以於相同頻道再次提出申請")
+    //.setTimestamp()
+    //.setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
 
     //順便發送至DC小管理頻道告知已駁回
     //let failEmbed = new Discord.RichEmbed()
-    .setColor(colors.red)
-    .setAuthor("暱稱審核申請", message.guild.iconURL)
-    .addField("申請用戶:", `${verifier.user.tag} (${verifier.user.id})`)
-    .addField("申請結果:", "遭到系統自動駁回")
-    .setTimestamp()
-    .setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
+    //.setColor(colors.red)
+    //.setAuthor("暱稱審核申請", message.guild.iconURL)
+    //.addField("申請用戶:", `${verifier.user.tag} (${verifier.user.id})`)
+    //.addField("申請結果:", "遭到系統自動駁回")
+    //.setTimestamp()
+    //.setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
 
     //if(message.member.displayName === "尚未更改暱稱") return verifier.send(adEmbed).then(() => adminchannel.send(failEmbed))
