@@ -20,20 +20,22 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
 
 
     if(title){
-        text = args.slice(1).join(" ")
         message.delete()
+        
+        text = args.slice(1).join(" ")
+
+        let bcEmbed = new Discord.RichEmbed()
+        .setColor(colors.darkred)
+        .setAuthor(`${title}`, message.author.displayAvatarURL)
+        .setDescription(text)
+        .setTimestamp()
+        .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
         broadcastchannel.send(bcEmbed)
     }else{
         message.delete()
         message.channel.send("[提示]請輸入公告標題後再輸入內容")
         .then(m => m.delete(3000))
     }
-    let bcEmbed = new Discord.RichEmbed()
-    .setColor(colors.darkred)
-    .setAuthor(`${title}`, message.author.displayAvatarURL)
-    .setDescription(text)
-    .setTimestamp()
-    .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
 }
 module.exports.config = {
     name: "broadcast",
