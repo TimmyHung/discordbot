@@ -58,7 +58,7 @@ module.exports.config = {
     name: "broadcast",
     aliases: ["bc", "announcement", "ac"],
     usage: `${prefix}broadcast <公告標題> <公告內容>`,
-    description: "管理員公告時使用",
+    description: "發布公告",
     //noalias: "無指令縮寫",
     user: "`全能管理`"
 }

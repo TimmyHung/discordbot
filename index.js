@@ -63,8 +63,6 @@ bot.on("message", async message =>{
 });
 
 bot.on("message", async message =>{
-
-    if(message.channel.id !== '651080117006762014') return;
     
 
     let messageArray = message.content.split(" ")
