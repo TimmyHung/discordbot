@@ -77,7 +77,7 @@ module.exports.run = async (bot, message, args) =>{
     .then(() => adminchannel.send("貼心的可複製文字:"))
     .then(() => adminchannel.send(`${prefix}accept <@!${verifier.user.id}>`))
     .then(() => adminchannel.send(`${prefix}deny <@!${verifier.user.id}> <駁回原因>`))
-    .then(() => adminchannel.send("不貼心的手動文字(`@的前面加上加上<`):"))
+    .then(() => adminchannel.send("不貼心的手動文字(`!@的前面加上加上<`):"))
     .then(() => adminchannel.send(`${prefix}accept !@${verifier.user.id}>`))
     .then(() => adminchannel.send(`${prefix}deny !@${verifier.user.id}> <駁回原因>`))
 }
