@@ -35,7 +35,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             .setAuthor(`${title}`, message.author.displayAvatarURL)
             .setDescription(text)
             .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
-            broadcastchannel.send(role.broadcast.mention())
+            broadcastchannel.send(`<@&${role.broadcast}>`)
             .then(() => broadcastchannel.send(bcEmbed))
         }
     }
