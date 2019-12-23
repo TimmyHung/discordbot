@@ -11,6 +11,7 @@ module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("648476721200496670")
 let broadcastchannel = message.guild.channels.get("557512448719192075")
+let notifychannel = message.guild.channels.get("645846237190291516")
 
 if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]權限不足")
     .then(() => message.react('❌'))
@@ -35,12 +36,13 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             .setAuthor(`公告: ${title}`, message.author.displayAvatarURL)
             .setDescription(text)
             .setFooter(`PETTW.ONLINE • 由${message.member.user.tag}發布`)
-            broadcastchannel.send(`<@&${role.broadcast}>`)
-            .then(() => broadcastchannel.send(bcEmbed))
+
+            broadcastchannel.send(bcEmbed)
         
             message.guild.members.forEach( (member) => {
                 if(member.roles.has(role.wanted)) {
-                    member.send(bcEmbed); 
+                    member.send(bcEmbed)
+                    .then(() => member.send(`[小提醒]如果覺得通知打擾到您，您可以選擇至${notifychannel}關閉通知。`))
                 }
             })
         }
