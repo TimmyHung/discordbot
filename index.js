@@ -40,7 +40,7 @@ bot.on("guildMemberAdd", member => {
     .setAuthor(`歡迎加入 P.E.T伺服器 Discord 群組`)
     .setThumbnail(member.user.displayAvatarURL)
     .setDescription(`新成員: <@!${member.id}> \n\n 目前所有頻道皆處於上鎖狀態 \n\n 請先至 ${rchannel} 閱讀規則 \n\n 並依照指示開啟 Discord 功能 \n\n 如果有任何疑問 歡迎使用 ${lchannel}`)
-    .setFooter(`PETTW.ONLINE•由 ${timmy.tag} 開發`)
+    .setFooter(`PETTW.ONLINE • 由 ${timmy.tag} 開發`)
     
 
     channel.send(JemBed)
@@ -87,7 +87,7 @@ bot.on("message", async message =>{
         .setAuthor(`${asknick} 問到:`, message.author.displayAvatarURL)
         .setDescription(question)
         .addField("詢問日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
-        .setFooter(`玩家&官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL)
+        .setFooter(`玩家&官方協助專區 • 由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL)
 
         if(message.member.roles.has(role.helper))
         return message.channel.send(`[錯誤]你是回覆助手應該直接找 ${timmy.user.tag} 解決問題`).then(m => m.delete(3000))
