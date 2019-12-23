@@ -7,12 +7,11 @@ const role = require("../role.json");
 
 module.exports.run = async (bot, message, args) =>{
 
-let punishchannel = message.guild.channels.get("557512829327114250")
-
-if(!message.member.roles.has(role.admin) || !message.member.roles.has(role.dcadmin)) return message.channel.send("[錯誤]權限不足");
-if(!message.member.roles.has(role.dcadmin)){ 
-} else if(message.channel.id != 557512829327114250)
-        return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
+if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin)) {
+}else return message.channel.send("[錯誤]權限不足");
+// if(!message.member.roles.has(role.dcadmin)){ 
+// } else if(message.channel.id != 557512829327114250)
+//         return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
 
 if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(MANAGE_ROLE)")
 
@@ -41,15 +40,12 @@ mutee.removeRole(muterole.id).then(() => {
 
 let embed = new Discord.RichEmbed()
 .setColor(colors.darkgreen)
-.setAuthor("伺服器撤銷紀錄", message.guild.iconURL)
-.addField("撤銷類別:", "禁止發言")
-.addField("撤銷用戶:", mutee.user.tag)
-.addField("撤銷原因:", reason)
-.addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
+.setThumbnail(mutee.user.displayAvatarURL)
+.setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
+.setDescription(`**操作類別:** 撤銷禁言\n**用戶名稱:** ${mutee.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
 
-let sChannel = message.guild.channels.find(c => c.name === "測試頻道")
-sChannel.send(embed)
+let punishchannel = message.guild.channels.get("557512829327114250")
+punishchannel.send(embed)
 
 }
 module.exports.config = {

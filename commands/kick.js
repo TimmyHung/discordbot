@@ -7,11 +7,12 @@ const role = require("../role.json");
 
 module.exports.run = async (bot, message, args) =>{
 
-let punishchannel = message.guild.channels.get("557512829327114250")
-if(!message.member.roles.has(role.admin) || !message.member.roles.has(role.dcadmin)) return message.channel.send("[錯誤]權限不足");
-if(!message.member.roles.has(role.dcadmin)){ 
-} else if(message.channel.id != 557512829327114250)
-        return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
+
+if(message.member.roles.has(role.admin) || message.member.roles.has(role.dcadmin)) {
+}else return message.channel.send("[錯誤]權限不足");
+// if(!message.member.roles.has(role.dcadmin)){ 
+// } else if(message.channel.id != 557512829327114250)
+//         return message.channel.send(`[錯誤]槓你的到正確的頻道使用啦 (${punishchannel})`)
 
 if(!message.guild.me.hasPermission("KICK_MEMBERS")) return message.channel.send("[錯誤]我沒有足夠的權限執行這項指令(KICK_MEMBERS)")
   
@@ -42,15 +43,12 @@ message.channel.send(`用戶:${kickMember.user.username} 已被踢出伺服器�
 
 let embed = new Discord.RichEmbed()
 .setColor(colors.red)
-.setAuthor("伺服器懲處紀錄", message.guild.iconURL)
-.addField("懲處類別:", "踢出伺服器")
-.addField("違規用戶:", kickMember.user.tag)
-.addField("違規原因:", reason)
-.addField("操作人員:", message.author.tag)
-.addField("執行日期:", message.createdAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'}))
+.setThumbnail(kickMember.user.displayAvatarURL)
+.setAuthor(`${message.guild.name} 社群紀錄`, message.author.displayAvatarURL)
+.setDescription(`**操作類別:** 踢出伺服器\n**用戶名稱:** ${kickMember.user.tag}\n**操作原因:** ${reason}\n**操作人員:** ${message.author.tag}\n**執行日期:** ${message.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}`)
 
-let sChannel = message.guild.channels.find(c => c.name === "懲處中心")
-sChannel.send(embed)
+let punishchannel = message.guild.channels.get("557512829327114250")
+punishchannel.send(embed)
 }
 module.exports.config = {
     name: "kick",
