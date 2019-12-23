@@ -10,7 +10,7 @@ const role = require("../role.json");
 module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("648476721200496670")
-let broadcastchannel = message.guild.channels.get("649553237384495104")
+let broadcastchannel = message.guild.channels.get("557512448719192075")
 
 if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]權限不足")
     .then(() => message.react('❌'))
@@ -34,7 +34,6 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             .setColor(colors.darkred)
             .setAuthor(`${title}`, message.author.displayAvatarURL)
             .setDescription(text)
-            .setTimestamp()
             .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
             message.channel.send(`<!@${role.broadcast}>`)
             .then(() => broadcastchannel.send(bcEmbed))
