@@ -26,7 +26,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
         if(title){
             message.delete()
     
-            text = args.slice(args[0].length).join(" ")
+            text = args.slice(1).join(" ")
             if(!text) return message.channel.send("[提示]請輸入公告內容")
             .then(m => m.delete(3000))
             
