@@ -36,7 +36,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             .setDescription(text)
             .setTimestamp()
             .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
-            message.channel.send(`<!@${role.broadcast.id}>`)
+            message.channel.send(`${role.broadcast}`)
             .then(() => broadcastchannel.send(bcEmbed))
         }
     }
