@@ -33,13 +33,13 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             
             let bcEmbed = new Discord.RichEmbed()
             .setColor(colors.darkred)
-            .setAuthor(`${title}`, message.author.displayAvatarURL)
+            .setAuthor(`**${title}**`, message.author.displayAvatarURL)
             .setDescription(text)
             .setFooter(`P.E.T伺服器公告 • 由${message.member.user.tag}發布`)
 
             let privateEmbed = new Discord.RichEmbed()
             .setColor(colors.darkred)
-            .setAuthor(`${title}`, message.author.displayAvatarURL)
+            .setAuthor(`**${title}**`, message.author.displayAvatarURL)
             .setDescription(text)
             .addField("[小提醒]", `如果覺得通知打擾到您，可以選擇至${notifychannel}關閉通知。`)
             .setFooter(`P.E.T伺服器公告 • 由${message.member.user.tag}發布`)
