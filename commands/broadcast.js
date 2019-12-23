@@ -47,7 +47,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             broadcastchannel.send(bcEmbed)
         
             message.guild.members.forEach( (member) => {
-                if(member.roles.has(role.wanted)) {
+                if(member.roles.has(role.broadcast)) {
                     member.send(privateEmbed)
                     .catch(function(err) {
                 if(err != "DiscordAPIError: Cannot send messages to this user")
