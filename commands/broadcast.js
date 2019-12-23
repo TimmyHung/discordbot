@@ -32,9 +32,9 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             
             let bcEmbed = new Discord.RichEmbed()
             .setColor(colors.darkred)
-            .setAuthor(`${title}`, message.author.displayAvatarURL)
+            .setAuthor(`公告: ${title}`, message.author.displayAvatarURL)
             .setDescription(text)
-            .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
+            .setFooter(`PETTW.ONLINE • 由${message.member.user.tag}發布`)
             broadcastchannel.send(`<@&${role.broadcast}>`)
             .then(() => broadcastchannel.send(bcEmbed))
         
