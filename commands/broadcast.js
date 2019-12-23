@@ -26,7 +26,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
         if(title){
             message.delete()
     
-            text = args.slice(title).join(" ")
+            text = args.slice(args[0].length).join(" ")
             if(!text) return message.channel.send("[提示]請輸入公告內容")
             .then(m => m.delete(3000))
             
@@ -36,7 +36,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             .setDescription(text)
             .setTimestamp()
             .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
-            message.channel.send(`${role.broadcast}`)
+            message.channel.send(`<!@${role.broadcast}>`)
             .then(() => broadcastchannel.send(bcEmbed))
         }
     }
