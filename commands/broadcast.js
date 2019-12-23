@@ -11,6 +11,7 @@ module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("648476721200496670")
 let broadcastchannel = message.guild.channels.get("557512448719192075")
+let broadcaster = message.guild.member.roles.has(role.wanted)
 
 if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]權限不足")
     .then(() => message.react('❌'))
@@ -37,6 +38,7 @@ if(!message.member.roles.has(role.admin)) return message.channel.send("[錯誤]�
             .setFooter(`伺服器公告 • 由${message.member.user.tag}發布`)
             broadcastchannel.send(`<@&${role.broadcast}>`)
             .then(() => broadcastchannel.send(bcEmbed))
+            .then(() => broadcaster.send(bcEmbed))
         }
     }
 }
