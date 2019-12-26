@@ -12,7 +12,6 @@ module.exports.run = async (bot, message, args) =>{
        //伺服器資訊Embed
   // setInterval(function () {
     var request = require('request');
-    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mainPort; //伺服器偵測用API
     var mcIP = '114.35.249.143'; //主機IP
     var bungeePort = 25565; // 分流port
     var mainPort = 25568; // 主線port
@@ -20,6 +19,7 @@ module.exports.run = async (bot, message, args) =>{
     var skyblockPort = 25568; // 空島port
     var prisonPort = 25568; // 監獄port
     var testchannel = bot.channels.get("649553237384495104") // 測試頻道ID
+    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mainPort; //伺服器偵測用API
 
     request(url, function(err, response, body) {
       if(err) {
@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) =>{
         .setAuthor(`伺服器分流狀態一覽表`)
         .setDescription(`**分流:** 主線\n**狀態:** ${statue}\n線上人數: ${player}`)
       
-      if(body.online == "true") {
+      if(body.online) {
           stat = '**伺服器上線中**'
           stat += '**' + body.players.now + '** 人正在線上!'
           status = "線上✅";
