@@ -59,7 +59,7 @@ module.exports = bot => {
       let player = "N/A";
       let statEmbed = new Discord.RichEmbed()
         .setColor(colors.darkblue)
-        .setAuthor(`分流狀態一覽表`, bot.guild.iconURL)
+        .setAuthor(`伺服器分流狀態一覽表`)
         .setDescription(`**分流:** 主線\n**狀態:** ${statue}\n線上人數: ${player}`)
       
       if(body.online) {
