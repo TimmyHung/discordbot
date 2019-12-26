@@ -40,7 +40,7 @@ module.exports = bot => {
    //伺服器資訊Embed
    setInterval(function () {
     var request = require('request');
-    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort; //伺服器偵測用API
+    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mainPort; //伺服器偵測用API
     var mcIP = '114.35.249.143'; //主機IP
     var bungeePort = 25565; // 分流port
     var mainPort = 25568; // 主線port
