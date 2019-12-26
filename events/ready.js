@@ -21,18 +21,12 @@ module.exports = bot => {
         "PETTW.ONLINE",
         "P.E.T伺服器",
         "!help 查看指令幫助",
-        `目前有 ${bot.users.size} 位成員`,
-        "夜夜是智障",
-        "新毛豆!",
-        "我正在監視著你們"
-
-
     ] 
 
     setInterval(function(){
         let status = statuses[Math.floor(Math.random() * statuses.length)]
         bot.user.setActivity(status, {type: "PLAYING"})
-        bot.user.setStatus('dnd')
+        bot.user.setStatus('idle')
     }, 5000)
 
     const guild = bot.guilds.get("300204064451461132");
