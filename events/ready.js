@@ -34,4 +34,11 @@ module.exports = bot => {
         bot.user.setActivity(status, {type: "PLAYING"})
         bot.user.setStatus('dnd')
     }, 5000)
+
+    const guild = bot.guilds.get("300204064451461132");
+   setInterval(function () {
+      var memberCount = guild.members.filter(member => !member.user.bot).size;  
+      var memberCountChannel = bot.channels.get("659674065857937408");
+      memberCountChannel.setName(`📐用戶統計: ${memberCount}人`);
+   }, 1000);
 }
