@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) =>{
       
       if(body.online) {
           stat = '**伺服器上線中**'
-          stat += '**' + body.players.now + '** 人正在線上!'
+          stat += '，目前' + body.players.now + '位玩家正在線上!'
           status = "線上✅";
           player = `${body.players.now} / ${body.players.max}`;
       }
