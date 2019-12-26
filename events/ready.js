@@ -47,7 +47,7 @@ module.exports = bot => {
     var lobbyPort = 25568; // 大廳port
     var skyblockPort = 25568; // 空島port
     var prisonPort = 25568; // 監獄port
-    var testchannel = bot.guild.channels.get("649553237384495104") // 測試頻道ID
+    var testchannel = bot.channels.get("649553237384495104") // 測試頻道ID
 
     request(url, function(err, response, body) {
       if(err) {
