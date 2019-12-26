@@ -27,6 +27,7 @@ module.exports.run = async (bot, message, args) =>{
           return message.reply('[錯誤]無法取得伺服器狀態...');
       }
       body = JSON.parse(body);
+      var stat = '**伺服器未開啟**'
       let statue = "離線❌";
       let player = "N/A";
       let statEmbed = new Discord.RichEmbed()
@@ -35,10 +36,13 @@ module.exports.run = async (bot, message, args) =>{
         .setDescription(`**分流:** 主線\n**狀態:** ${statue}\n線上人數: ${player}`)
       
       if(body.online) {
+          stat = '**伺服器上線中**'
+          stat += '**' + body.players.now + '** 人證在線上!'
           status = "線上✅";
           player = `${body.players.now} / ${body.players.max}`;
       }
-      testchannel.send(statEmbed);
+      testchannel.send(stat);
+      //testchannel.send(statEmbed);
 // }, 10000);
 })
 
