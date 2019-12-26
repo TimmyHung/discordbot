@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client();
-const colors = require('../color.json')
+const colors = require("../color.json")
 
 module.exports = bot => {
     console.log(`${bot.user.username} 已上線!`)
@@ -59,7 +59,7 @@ module.exports = bot => {
       let player = "N/A";
       let statEmbed = new Discord.RichEmbed()
         .setColor(colors.darkblue)
-        .setAuthor(`分流狀態一覽表`, bot.guild.displayAvatarURL)
+        .setAuthor(`分流狀態一覽表`, bot.guild.iconURL)
         .setDescription(`**分流:** 主線\n**狀態:** ${statue}\n線上人數: ${player}`)
       
       if(body.online) {
