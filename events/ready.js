@@ -67,7 +67,7 @@ module.exports = bot => {
           player = `${body.players.now} / ${body.players.max}`;
       }
       testchannel.send(statEmbed);
- }, 1000);
+ }, 10000);
 })
 
 
