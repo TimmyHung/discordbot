@@ -35,14 +35,14 @@ module.exports.run = async (bot, message, args) =>{
         .setAuthor(`伺服器分流狀態一覽表`)
         .setDescription(`**分流:** 主線\n**狀態:** ${statue}\n線上人數: ${player}`)
       
-      if(body.online) {
+      if(body.online == "true") {
           stat = '**伺服器上線中**'
-          stat += '**' + body.players.now + '** 人證在線上!'
+          stat += '**' + body.players.now + '** 人正在線上!'
           status = "線上✅";
           player = `${body.players.now} / ${body.players.max}`;
       }
       testchannel.send(stat);
-      //testchannel.send(statEmbed);
+      // testchannel.send(statEmbed);
 // }, 10000);
 })
 
