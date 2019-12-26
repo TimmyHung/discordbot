@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client();
-
+const colors = require('../color.json')
 
 module.exports = bot => {
     console.log(`${bot.user.username} 已上線!`)
