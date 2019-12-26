@@ -12,6 +12,7 @@
     "discord.js": "^11.5.1",
     "fs": "0.0.1-security",
     "node-fetch": "^2.6.0",
-    "superagent": "^5.1.1"
+    "superagent": "^5.1.1",
+    "request": "^2.83.0"
   }
 }
