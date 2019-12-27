@@ -39,7 +39,7 @@ module.exports = bot => {
 
 
    //伺服器資訊Embed
-   var mcIP = '114.35.249.143'; //主機IP
+   var mcIP = '114.35.249.142'; //主機IP
    var bungeePort = 25565; // 分流port
    var mainPort = 25568; // 主線port
    var lobbyPort = 25563; // 大廳port
@@ -53,7 +53,9 @@ module.exports = bot => {
    ping(mcIP, skyblockPort, (error, reponse) =>{
      if(error) throw error
      const Embed = new Discord.RichEmbed()
-     .setTitle('伺服器分流及時狀態')
+     .setColor(colors.gold)
+     .setTitle('⚙️伺服器分流及時狀態')
+     .setDescription('**分流:** 主線')
      .addField('伺服器IP', reponse.host)
      .addField('伺服器版本', reponse.version)
      .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
