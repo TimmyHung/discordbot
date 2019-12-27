@@ -52,16 +52,21 @@ module.exports = bot => {
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
     let state = "線上✅";
-     if(error == "connect ECONNREFUSED 114.35.249.142:56353") state = "離線❌";
-     
+    let sversion = reponse.version
+    let playercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
+     if(error == "connect ECONNREFUSED 114.35.249.142:56353") {
+       state = "離線❌"
+       sversion = "N/A"
+       playercount = "N/A"
+     }
+
      const Embed = new Discord.RichEmbed()
      .setColor(colors.gold)
      .setTitle('⚙️伺服器分流及時狀態')
      .setDescription('**分流:** 主線')
      .addField('伺服器狀態:', state)
-     .addField('伺服器IP', reponse.host)
-     .addField('伺服器版本', reponse.version)
-     .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
+     .addField('伺服器版本', sversion)
+     .addField('Online Players', playercount)
     
     playerchannel.fetchMessages({around: "660155030015574051", limit: 1})
      .then(msg => {
