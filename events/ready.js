@@ -51,84 +51,37 @@ module.exports = bot => {
 
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
-    let state;
-    let sversion;
-    let playercount;
-     if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + skyblockPort) {
-       state = "離線❌"
-       sversion = "N/A"
-       playercount = "N/A"
+    let mstate;
+    let mversion;
+    let mplayercount;
+     if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + mainPort) {
+       mstate = "離線❌"
+       mversion = "N/A"
+       mplayercount = "N/A"
      }else{
-      state = "線上✅";
-      sversion = reponse.version
-      cplayercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
+      mstate = "線上✅";
+      mversion = reponse.version
+      mplayercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
      }
+     });
+
 
      const Embed = new Discord.RichEmbed()
      .setColor(colors.gold)
      .setTitle('⚙️伺服器分流及時狀態')
-     .setDescription('**分流:** 主線')
-     .addField('伺服器狀態:', state)
-     .addField('伺服器版本', sversion)
-     .addField('Online Players', playercount)
-
-     const exampleEmbed = {
-      color: 0x0099ff,
-      title: 'Some title',
-      url: 'https://discord.js.org',
-      author: {
-        name: 'Some name',
-        icon_url: 'https://i.imgur.com/wSTFkRM.png',
-        url: 'https://discord.js.org',
-      },
-      description: 'Some description here',
-      thumbnail: {
-        url: 'https://i.imgur.com/wSTFkRM.png',
-      },
-      fields: [
-        {
-          name: 'Regular field title',
-          value: 'Some value here',
-        },
-        {
-          name: '\u200b',
-          value: '\u200b',
-        },
-        {
-          name: 'Inline field title',
-          value: 'Some value here',
-          inline: true,
-        },
-        {
-          name: 'Inline field title',
-          value: 'Some value here',
-          inline: true,
-        },
-        {
-          name: 'Inline field title',
-          value: 'Some value here',
-          inline: true,
-        },
-      ],
-      image: {
-        url: 'https://i.imgur.com/wSTFkRM.png',
-      },
-      timestamp: new Date(),
-      footer: {
-        text: 'Some footer text here',
-        icon_url: 'https://i.imgur.com/wSTFkRM.png',
-      },
-    };
-    
+     .addField('**主線分流:** ', `狀態: ${mstate}\n人數: ${mplaycount}\n核心版本: ${mversion}`)
+     .addField('伺服器狀態:', mstate)
+     .addField('伺服器版本', msversion)
+     .addField('線上人數:', mplayercount)
     
     playerchannel.fetchMessages({around: "660155030015574051", limit: 1})
      .then(msg => {
          const fetchedMsg = msg.first();
          fetchedMsg.edit(Embed);
-     });
-
-  })
-  }, 15000);
+     })
+  
+  
+    }, 15000);
 
 
 
