@@ -55,7 +55,7 @@ module.exports = bot => {
     let mplayercount;
   //主線
    ping(mcIP, mainPort, (error, reponse) =>{
-     if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + mainPort) {
+     if(error) {
        mstate = "離線❌"
        mversion = "N/A"
        mplayercount = "N/A"
@@ -78,7 +78,7 @@ module.exports = bot => {
      });
 //空島
      ping(mcIP, skyblockPort, (error, reponse) =>{
-      if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + skyblockPort) {
+      if(error) {
         mstate = "離線❌"
         mversion = "N/A"
         mplayercount = "N/A"
@@ -101,7 +101,7 @@ module.exports = bot => {
       });
   //監獄
       ping(mcIP, prisonPort, (error, reponse) =>{
-        if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + prisonPort) {
+        if(error) {
           mstate = "離線❌"
           mversion = "N/A"
           mplayercount = "N/A"
@@ -125,7 +125,7 @@ module.exports = bot => {
 
   //大廳
         ping(mcIP, lobbyPort, (error, reponse) =>{
-          if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + lobbyPort) {
+          if(error) {
             mstate = "離線❌"
             mversion = "N/A"
             mplayercount = "N/A"
