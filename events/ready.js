@@ -51,13 +51,17 @@ module.exports = bot => {
 
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
-    let state = "線上✅";
-    let sversion = reponse.version
-    let playercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
+    let state;
+    let sversion;
+    let playercount;
      if(error == "connect ECONNREFUSED 114.35.249.142:56353") {
        state = "離線❌"
        sversion = "N/A"
        playercount = "N/A"
+     }else{
+      state = "線上✅";
+      sversion = reponse.version
+      cplayercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
      }
 
      const Embed = new Discord.RichEmbed()
