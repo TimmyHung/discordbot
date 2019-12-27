@@ -31,23 +31,20 @@ module.exports.run = async (bot, message, args) =>{
       let statue = "離線❌";
       let player = "N/A";
       let oldEmbed = message.embeds[0];
-      let statEmbed = new Discord.RichEmbed(oldEmbed)
-        .setColor(colors.darkblue)
-        .setAuthor(`伺服器分流狀態一覽表`)
-        .setDescription(`**分流:** 空島\n**狀態:** ${statue}\n線上人數: ${player}`)
+      
       
       if(body.online) {
           stat = '**伺服器上線中**'
           stat += '，目前' + body.players.now + '位玩家正在線上!'
           statue = "線上✅";
           player = `${body.players.now} / ${body.players.max}`;
+
+          let statEmbed = new Discord.RichEmbed(oldEmbed)
+          .setColor(colors.darkblue)
+          .setAuthor(`伺服器分流狀態一覽表`)
+          .setDescription(`**分流:** 空島\n**狀態:** ${statue}\n線上人數: ${player}`)
       }
-      if(!oldEmbed)
       testchannel.send(statEmbed);
-      else
-      message.edit(oldEmbed)
-      .setAuthor(`伺服器分流狀態一覽表`)
-      .setDescription(`**分流:** 空島\n**狀態:** ${statue}\n線上人數: ${player}`)
       // testchannel.send(stat);
 // }, 10000);
 })
