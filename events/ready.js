@@ -45,7 +45,7 @@ module.exports = bot => {
    var lobbyPort = 25563; // 大廳port
    var skyblockPort = 56353; // 空島port
    var prisonPort = 25578; // 監獄port
-   var testchannel = bot.channels.get("649553237384495104") // 測試頻道ID
+   var playerchannel = bot.channels.get("660152534068887556") // 測試頻道ID
    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + skyblockPort; //伺服器偵測用API
 
 
@@ -53,12 +53,12 @@ module.exports = bot => {
    ping(mcIP, skyblockPort, (error, reponse) =>{
      if(error) throw error
      const Embed = new Discord.RichEmbed()
-     .setTitle('伺服器狀態: 空島')
+     .setTitle('伺服器分流及時狀態')
      .addField('伺服器IP', reponse.host)
      .addField('伺服器版本', reponse.version)
      .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
     
-    testchannel.fetchMessages({around: "660148269988577305", limit: 1})
+    playerchannel.fetchMessages({around: "660155030015574051", limit: 1})
      .then(msg => {
          const fetchedMsg = msg.first();
          fetchedMsg.edit(Embed);
