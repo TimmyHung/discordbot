@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 const client = new Discord.Client();
 const colors = require("../color.json")
+const ping = require("minecraft-server-util")
 
 module.exports = bot => {
     console.log(`${bot.user.username} 已上線!`)
@@ -36,6 +37,33 @@ module.exports = bot => {
       memberCountChannel.setName(`📐用戶統計 ${memberCount}人`);
    }, 1000);
 
+
+   //伺服器資訊Embed
+   var mcIP = '114.35.249.143'; //主機IP
+   var bungeePort = 25565; // 分流port
+   var mainPort = 25568; // 主線port
+   var lobbyPort = 25563; // 大廳port
+   var skyblockPort = 56353; // 空島port
+   var prisonPort = 25578; // 監獄port
+   var testchannel = bot.channels.get("649553237384495104") // 測試頻道ID
+   var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + skyblockPort; //伺服器偵測用API
+
+
+   setInterval(function () {
+   ping(mcIP, skyblockPort, (error, reponse) =>{
+     if(error) throw error
+     const oldEmbed = message.embeds[0];
+     const Embed = new Discord.RichEmbed(oldEmbed)
+     .setTitle('伺服器狀態: 空島')
+     .addField('伺服器IP', reponse.host)
+     .addField('伺服器版本', reponse.version)
+     .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
+    if(!oldEmbed)
+    testchannel.send(Embed)
+    else
+    message.edit(oldEmbed)
+  })
+  }, 15000);
 
 
 

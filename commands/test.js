@@ -9,8 +9,7 @@ const ping = require("minecraft-server-util")
 
 module.exports.run = async (bot, message, args) =>{
 
-       //伺服器資訊Embed
-  // setInterval(function () {
+    //伺服器資訊Embed
     var request = require('request');
     var mcIP = '114.35.249.143'; //主機IP
     var bungeePort = 25565; // 分流port
