@@ -54,7 +54,7 @@ module.exports = bot => {
     let state;
     let sversion;
     let playercount;
-     if(error) {
+     if(error == "Error: connect ECONNREFUSED 114.35.249.142:56353") {
        console.log(error)
        state = "離線❌"
        sversion = "N/A"
