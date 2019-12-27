@@ -52,16 +52,18 @@ module.exports = bot => {
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
      if(error) throw error
-     const oldEmbed = message.embeds[0];
      const Embed = new Discord.RichEmbed(oldEmbed)
      .setTitle('伺服器狀態: 空島')
      .addField('伺服器IP', reponse.host)
      .addField('伺服器版本', reponse.version)
      .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
-    if(!oldEmbed)
-    testchannel.send(Embed)
-    else
-    message.edit(oldEmbed)
+    
+    testchannel.fetchMessages({around: "660148269988577305", limit: 1})
+     .then(msg => {
+         const fetchedMsg = msg.first();
+         fetchedMsg.edit(Embed);
+     });
+
   })
   }, 15000);
 
