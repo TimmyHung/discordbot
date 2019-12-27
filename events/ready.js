@@ -66,7 +66,7 @@ module.exports = bot => {
 
      const Embed = new Discord.RichEmbed()
      .setColor(colors.gold)
-     .setTitle('⚙️伺服器分流及時狀態')
+     .setTitle('⚙️伺服器及時狀態')
      .addField('**主線分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
 
      playerchannel.fetchMessages({around: "660155030015574051", limit: 1})
@@ -75,6 +75,77 @@ module.exports = bot => {
          fetchedMsg.edit(Embed);
      })
      });
+//空島
+     ping(mcIP, skyblockPort, (error, reponse) =>{
+      if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + skyblockPort) {
+        mstate = "離線❌"
+        mversion = "N/A"
+        mplayercount = "N/A"
+      }else{
+       mstate = "線上✅";
+       mversion = reponse.version
+       mplayercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
+      }
+ 
+      const Embed = new Discord.RichEmbed()
+      .setColor(colors.gold)
+      .setTitle('⚙️伺服器及時狀態')
+      .addField('**空島分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
+ 
+      playerchannel.fetchMessages({around: "660171569196302377", limit: 1})
+      .then(msg => {
+          const fetchedMsg = msg.first();
+          fetchedMsg.edit(Embed);
+      })
+      });
+  //監獄
+      ping(mcIP, prisonPort, (error, reponse) =>{
+        if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + prisonPort) {
+          mstate = "離線❌"
+          mversion = "N/A"
+          mplayercount = "N/A"
+        }else{
+         mstate = "線上✅";
+         mversion = reponse.version
+         mplayercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
+        }
+   
+        const Embed = new Discord.RichEmbed()
+        .setColor(colors.gold)
+        .setTitle('⚙️伺服器及時狀態')
+        .addField('**監獄分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
+   
+        playerchannel.fetchMessages({around: "660171580218933258", limit: 1})
+        .then(msg => {
+            const fetchedMsg = msg.first();
+            fetchedMsg.edit(Embed);
+        })
+        });
+
+  //大廳
+        ping(mcIP, lobbyPort, (error, reponse) =>{
+          if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + lobbyPort) {
+            mstate = "離線❌"
+            mversion = "N/A"
+            mplayercount = "N/A"
+          }else{
+           mstate = "線上✅";
+           mversion = reponse.version
+           mplayercount = reponse.onlinePlayers + "/" + reponse.maxPlayers
+          }
+     
+          const Embed = new Discord.RichEmbed()
+          .setColor(colors.gold)
+          .setTitle('⚙️伺服器及時狀態')
+          .addField('**大廳分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
+     
+          playerchannel.fetchMessages({around: "660171590834716682", limit: 1})
+          .then(msg => {
+              const fetchedMsg = msg.first();
+              fetchedMsg.edit(Embed);
+          })
+          });
+     
 
      
   
