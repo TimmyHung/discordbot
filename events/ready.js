@@ -52,7 +52,7 @@ module.exports = bot => {
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
      if(error) throw error
-     const Embed = new Discord.RichEmbed(oldEmbed)
+     const Embed = new Discord.RichEmbed()
      .setTitle('伺服器狀態: 空島')
      .addField('伺服器IP', reponse.host)
      .addField('伺服器版本', reponse.version)
