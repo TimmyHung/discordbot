@@ -50,10 +50,10 @@ module.exports = bot => {
 
 
    setInterval(function () {
-   ping(mcIP, skyblockPort, (error, reponse) =>{
     let mstate;
     let mversion;
     let mplayercount;
+   ping(mcIP, skyblockPort, (error, reponse) =>{
      if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + mainPort) {
        mstate = "離線❌"
        mversion = "N/A"
