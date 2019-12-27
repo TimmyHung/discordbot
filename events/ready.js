@@ -51,11 +51,14 @@ module.exports = bot => {
 
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
-     if(error) throw error
+    let state = "線上✅";
+     if(error == "connect ECONNREFUSED 114.35.249.143:56353") state = "離線❌";
+     
      const Embed = new Discord.RichEmbed()
      .setColor(colors.gold)
      .setTitle('⚙️伺服器分流及時狀態')
      .setDescription('**分流:** 主線')
+     .addField('伺服器狀態:', state)
      .addField('伺服器IP', reponse.host)
      .addField('伺服器版本', reponse.version)
      .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
