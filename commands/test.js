@@ -4,8 +4,8 @@ const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
 const role = require("../role.json")
-const ok = "✅";
-const no = "❌";
+const ping = require("minecraft-server-util")
+
 
 module.exports.run = async (bot, message, args) =>{
 
@@ -21,33 +21,20 @@ module.exports.run = async (bot, message, args) =>{
     var testchannel = bot.channels.get("649553237384495104") // 測試頻道ID
     var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + skyblockPort; //伺服器偵測用API
 
-    request(url, function(err, response, body) {
-      if(err) {
-          console.log(err);
-          return message.reply('[錯誤]無法取得伺服器狀態...');
-      }
-      body = JSON.parse(body);
-      var stat = '**伺服器未開啟**'
-      let statue = "離線❌";
-      let player = "N/A";
-      let statEmbed = new Discord.RichEmbed()
-      
-      if(body.online) {
-          stat = '**伺服器上線中**'
-          stat += '，目前' + body.players.now + '位玩家正在線上!'
-          statue = "線上✅";
-          player = `${body.players.now} / ${body.players.max}`;
-          
-          statEmbed.setColor(colors.darkblue)
-          statEmbed.setAuthor(`伺服器分流狀態一覽表`)
-          statEmbed.setDescription(`**分流:** 空島\n**狀態:** ${statue}\n線上人數: ${player}`)
-      }
-      testchannel.send(statEmbed);
-      // testchannel.send(stat);
-// }, 10000);
+    ping(mcIP, skyblockPort, (error, reponse) =>{
+      if(error) throw error
+      const Embed = new Discord.RichEmbed()
+      .setTitle('伺服器狀態: 空島')
+      .addField('伺服器IP', reponse.host)
+      .addField('伺服器版本', reponse.version)
+      .addField('Online Players', reponse.onlinePlayers + "/" + reponse.maxPlayers)
+     
+      message.channel.send(Embed)
+
 })
 
 }
+
 module.exports.config = {
     name: "test",
     aliases: ["test"],
