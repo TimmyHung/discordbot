@@ -52,7 +52,7 @@ module.exports = bot => {
    setInterval(function () {
    ping(mcIP, skyblockPort, (error, reponse) =>{
     let state = "線上✅";
-     if(error == "connect ECONNREFUSED 114.35.249.143:56353") state = "離線❌";
+     if(error == "connect ECONNREFUSED 114.35.249.142:56353") state = "離線❌";
      
      const Embed = new Discord.RichEmbed()
      .setColor(colors.gold)
