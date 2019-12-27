@@ -71,7 +71,7 @@ module.exports = bot => {
      .setTitle('⚙️伺服器分流及時狀態')
      .addField('**主線分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
      .addField('伺服器狀態:', mstate)
-     .addField('伺服器版本', msversion)
+     .addField('伺服器版本', mversion)
      .addField('線上人數:', mplayercount)
     
     playerchannel.fetchMessages({around: "660155030015574051", limit: 1})
