@@ -30,10 +30,11 @@ module.exports.run = async (bot, message, args) =>{
       var stat = '**伺服器未開啟**'
       let statue = "離線❌";
       let player = "N/A";
+      let oldEmbed = message.embeds[0];
       let statEmbed = new Discord.RichEmbed()
         .setColor(colors.darkblue)
         .setAuthor(`伺服器分流狀態一覽表`)
-        .setDescription(`**分流:** 主線\n**狀態:** ${statue}\n線上人數: ${player}`)
+        .setDescription(`**分流:** 空島\n**狀態:** ${statue}\n線上人數: ${player}`)
       
       if(body.online) {
           stat = '**伺服器上線中**'
@@ -41,8 +42,13 @@ module.exports.run = async (bot, message, args) =>{
           status = "線上✅";
           player = `${body.players.now} / ${body.players.max}`;
       }
-      testchannel.send(stat);
-      // testchannel.send(statEmbed);
+      if(!oldEmbed)
+      testchannel.send(statEmbed);
+      else
+      message.edit(statEmbed)
+      .setAuthor(`伺服器分流狀態一覽表`)
+      .setDescription(`**分流:** 空島\n**狀態:** ${statue}\n線上人數: ${player}`)
+      // testchannel.send(stat);
 // }, 10000);
 })
 
