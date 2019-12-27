@@ -53,6 +53,7 @@ module.exports = bot => {
     let mstate;
     let mversion;
     let mplayercount;
+  //主線
    ping(mcIP, mainPort, (error, reponse) =>{
      if(error == "Error: connect ECONNREFUSED" + mcIP + ":" + mainPort) {
        mstate = "離線❌"
@@ -69,7 +70,7 @@ module.exports = bot => {
      .setTitle('⚙️伺服器及時狀態')
      .addField('**主線分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
 
-     playerchannel.fetchMessages({around: "660155030015574051", limit: 1})
+     playerchannel.fetchMessages({around: "660172704384679963", limit: 1})
      .then(msg => {
          const fetchedMsg = msg.first();
          fetchedMsg.edit(Embed);
@@ -92,7 +93,7 @@ module.exports = bot => {
       .setTitle('⚙️伺服器及時狀態')
       .addField('**空島分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
  
-      playerchannel.fetchMessages({around: "660171569196302377", limit: 1})
+      playerchannel.fetchMessages({around: "660172709371707393", limit: 1})
       .then(msg => {
           const fetchedMsg = msg.first();
           fetchedMsg.edit(Embed);
@@ -115,7 +116,7 @@ module.exports = bot => {
         .setTitle('⚙️伺服器及時狀態')
         .addField('**監獄分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
    
-        playerchannel.fetchMessages({around: "660171580218933258", limit: 1})
+        playerchannel.fetchMessages({around: "660172716602556425", limit: 1})
         .then(msg => {
             const fetchedMsg = msg.first();
             fetchedMsg.edit(Embed);
@@ -139,7 +140,7 @@ module.exports = bot => {
           .setTitle('⚙️伺服器及時狀態')
           .addField('**大廳分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
      
-          playerchannel.fetchMessages({around: "660171590834716682", limit: 1})
+          playerchannel.fetchMessages({around: "660172724051902499", limit: 1})
           .then(msg => {
               const fetchedMsg = msg.first();
               fetchedMsg.edit(Embed);
