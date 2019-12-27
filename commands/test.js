@@ -15,11 +15,11 @@ module.exports.run = async (bot, message, args) =>{
     var mcIP = '114.35.249.143'; //主機IP
     var bungeePort = 25565; // 分流port
     var mainPort = 25568; // 主線port
-    var lobbyPort = 25568; // 大廳port
-    var skyblockPort = 25568; // 空島port
-    var prisonPort = 25568; // 監獄port
+    var lobbyPort = 25563; // 大廳port
+    var skyblockPort = 56353; // 空島port
+    var prisonPort = 25578; // 監獄port
     var testchannel = bot.channels.get("649553237384495104") // 測試頻道ID
-    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mainPort; //伺服器偵測用API
+    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + skyblockPort; //伺服器偵測用API
 
     request(url, function(err, response, body) {
       if(err) {
