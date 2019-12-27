@@ -69,7 +69,7 @@ module.exports = bot => {
      const Embed = new Discord.RichEmbed()
      .setColor(colors.gold)
      .setTitle('⚙️伺服器分流及時狀態')
-     .addField('**主線分流:** ', `狀態: ${mstate}\n人數: ${mplaycount}\n核心版本: ${mversion}`)
+     .addField('**主線分流:** ', `狀態: ${mstate}\n人數: ${mplayercount}\n核心版本: ${mversion}`)
      .addField('伺服器狀態:', mstate)
      .addField('伺服器版本', msversion)
      .addField('線上人數:', mplayercount)
