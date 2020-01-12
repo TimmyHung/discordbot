@@ -3,7 +3,7 @@ const botconfig = require("../botconfig.json");
 const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
-const roles = require("../role.json")
+const role = require("../role.json")
 
 module.exports.run = async (bot, message, args) =>{
     if(!message.memeber.roles.has(role.admin)){
