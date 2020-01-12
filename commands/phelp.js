@@ -6,7 +6,7 @@ const prefix = botconfig.prefix
 const role = require("../role.json")
 
 module.exports.run = async (bot, message, args) =>{
-    if(!message.memeber.roles.has(role.admin)){
+    if(message.member.roles.has(role.admin)){
     }else return message.channel.send("[錯誤]權限不足")
     if(args[0]){
         let plugin = args[0];
