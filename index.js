@@ -28,6 +28,38 @@ fs.readdir("./commands/", (err, files) =>{
     });
 });
 
+bot.on("message", async message =>{
+    if(message.author.bot || message.channel.type === "dm") return;
+    let prefix = botconfig.prefix;
+    let messageArray = message.content.split(" ")
+    let cmd = messageArray[0].toLowerCase();
+    let args = messageArray.slice(1);
+    
+    if(!message.content.startsWith(prefix)) return;
+    let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
+    if(commandfile) commandfile.run(bot, message, args)
+
+});
+
+//插件指令搜尋
+bot.plugins = new Discord.Collection();
+fs.readdir("./plugins/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if(jsfile.length <= 0){
+        console.log("[警告]無任何插件幫助資料!")
+    }
+
+    jsfile.forEach((f, i) =>{
+        let pull = require(`./plugins/${f}`);
+        bot.plugins.set(pull.pluginhelp.name, pull);
+        pull.pluginhelp.aliases.forEach(alias => {
+            bot.aliases.set(alias, pull.pluginhelp.name)
+        });
+    });
+});
+
+
 
 bot.on("guildMemberAdd", member => {
     let timmy = bot.users.get(role.timmyhung)
@@ -48,19 +80,6 @@ bot.on("guildMemberAdd", member => {
 
 });
 
-
-bot.on("message", async message =>{
-    if(message.author.bot || message.channel.type === "dm") return;
-    let prefix = botconfig.prefix;
-    let messageArray = message.content.split(" ")
-    let cmd = messageArray[0].toLowerCase();
-    let args = messageArray.slice(1);
-    
-    if(!message.content.startsWith(prefix)) return;
-    let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
-    if(commandfile) commandfile.run(bot, message, args)
-
-});
 
 bot.on("message", async message =>{
     
