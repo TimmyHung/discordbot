@@ -79,8 +79,8 @@ module.exports.run = async (bot, message, args) =>{
     .then(() => adminchannel.send(`${prefix}deny !@${verifier.user.id}> <駁回原因>`))
 }
 module.exports.config = {
-    name: "testverify",
-    aliases: ["verifytest"],
+    name: "verify",
+    aliases: ["verify"],
     usage: `${prefix}verify`,
     description: "提出暱稱審核申請",
     noalias: "無指令縮寫",
