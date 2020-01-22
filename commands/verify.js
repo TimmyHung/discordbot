@@ -55,15 +55,10 @@ module.exports.run = async (bot, message, args) =>{
     .addField("申請用戶:", verifier.user.tag)
     .addField("用戶暱稱:", verifier.displayName)
     .addField("用戶須知:", "審核將於一天內完成\n還請您耐心等候通知")
-   // .setTimestamp()
+    //.setTimestamp()
     //.setFooter("PETTW.ONLINE", bot.user.displayAvatarURL)
 
     verifier.send(pEmbed)
-    
-
-
-    if(message.member.displayName === "尚未更改暱稱") return verifier.send(adEmbed).then(() => adminchannel.send(failEmbed))
-
 
     let nickEmbed = new Discord.RichEmbed()
     .setColor(colors.orange)
