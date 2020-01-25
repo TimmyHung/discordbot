@@ -34,7 +34,7 @@ module.exports = bot => {
    setInterval(function () {
       var memberCount = guild.members.filter(member => !member.user.bot).size;  
       var memberCountChannel = bot.channels.get("659674065857937408");
-      memberCountChannel.setName(`📐用戶統計 ${memberCount}人`);
+      memberCountChannel.setName(`✎「📐」用戶統計 ${memberCount}人`);
    }, 1000);
 
 
