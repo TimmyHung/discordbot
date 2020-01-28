@@ -6,6 +6,7 @@ const prefix = botconfig.prefix
 const role = require("../role.json")
 const ok = "✅";
 const no = "❌";
+const dameshin3 = client.emojis.find(emoji => emoji.name === "dameshin3");
 
 module.exports.run = async (bot, message, args) =>{
 
@@ -74,7 +75,7 @@ module.exports.run = async (bot, message, args) =>{
     .then(() => adminchannel.send("貼心的可複製文字:"))
     .then(() => adminchannel.send(`${prefix}accept <@!${verifier.user.id}>`))
     .then(() => adminchannel.send(`${prefix}deny <@!${verifier.user.id}> <駁回原因>`))
-    .then(() => adminchannel.send("不貼心的手動文字(`@!的前面加上加上<`):dameshin3:"))
+    .then(() => adminchannel.send(`不貼心的手動文字(__@!的前面加上加上<__)${dameshin3}`)
     .then(() => adminchannel.send(`${prefix}accept @!${verifier.user.id}>`))
     .then(() => adminchannel.send(`${prefix}deny @!${verifier.user.id}> <駁回原因>`))
 }

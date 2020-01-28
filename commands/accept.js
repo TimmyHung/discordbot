@@ -7,6 +7,7 @@ const ok = "✅";
 const no = "❌";
 const role = require("../role.json");
 
+
 module.exports.run = async (bot, message, args) =>{
 
 let punishchannel = message.guild.channels.get("648476721200496670")
