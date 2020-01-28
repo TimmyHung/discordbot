@@ -179,6 +179,11 @@ bot.on("voiceStateUpdate", function(oldMember, newMember){
     
 })
 
+bot.on("message", async message => {
+    if(message.member.roles.has("671749333086896128"))
+    message.react('658634489517441043')
+})
+
     //bot.on("message", async message =>{
     //    if(message.member.roles.has(role.wanted))
     //    message.react('😡')
