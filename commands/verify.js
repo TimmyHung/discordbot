@@ -6,6 +6,7 @@ const prefix = botconfig.prefix
 const role = require("../role.json")
 const ok = "✅";
 const no = "❌";
+const client = new Discord.Client();
 const dameshin3 = client.emojis.find(emoji => emoji.name === "dameshin3");
 
 module.exports.run = async (bot, message, args) =>{
