@@ -6,7 +6,7 @@ const prefix = botconfig.prefix
 const role = require("../role.json")
 
 module.exports.run = async (bot, message, args) =>{
-    if(!message.member.roles.has(role.player)) return ;
+    if(!message.member.roles.has(role.member)) return ;
     let msg = await message.channel.send("搜尋中...")
     
     let {body} = await superagent
