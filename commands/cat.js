@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) =>{
 module.exports.config = {
     name: "cat",
     aliases: ["cat"],
-    usage: `${prefix}mimu`,
+    usage: `${prefix}cat`,
     description: "傳送可愛的貓咪圖片",
     noalias: "無指令縮寫",
     user: "`優質玩家`"
