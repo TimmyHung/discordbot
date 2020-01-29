@@ -3,9 +3,10 @@ const botconfig = require("../botconfig.json");
 const colors = require("../color.json");
 const superagent = require("superagent");
 const prefix = botconfig.prefix
+const role = require("../role.json")
 
 module.exports.run = async (bot, message, args) =>{
-    if(!message.member.hasPermission("ADMINISTRATOR")) return ;
+    if(!message.member.roles.has(role.player)) return ;
     let msg = await message.channel.send("搜尋中...")
     
     let {body} = await superagent
@@ -30,5 +31,5 @@ module.exports.config = {
     usage: `${prefix}mimu`,
     description: "傳送可愛的貓咪圖片"
     //noalias: "無指令縮寫",
-    //user: "管理員"
+    //user: "`優質玩家`"
 }
