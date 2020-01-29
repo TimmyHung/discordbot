@@ -29,7 +29,7 @@ module.exports.config = {
     name: "cat",
     aliases: ["cat", "mimu"],
     usage: `${prefix}mimu`,
-    description: "傳送可愛的貓咪圖片"
+    description: "傳送可愛的貓咪圖片",
     //noalias: "無指令縮寫",
-    //user: "`優質玩家`"
+    user: "`優質玩家`"
 }
