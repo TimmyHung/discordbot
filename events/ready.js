@@ -56,9 +56,9 @@ module.exports = bot => {
   //主線
    ping(mcIP, mainPort, (error, reponse) =>{
      if(error) {
-       mstate = "離線❌"
-       mversion = "N/A"
-       mplayercount = "N/A"
+       mstate = "🛠️改版升級中🛠️"//"離線❌"
+       mversion = "🤫"
+       mplayercount = "🤫"
      }else{
       mstate = "線上✅";
       mversion = reponse.version
