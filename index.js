@@ -101,7 +101,7 @@ bot.on("message", async message =>{
         .setColor(colors.yellow)
         .setAuthor(`${asknick} 問到:`, message.author.displayAvatarURL)
         .setDescription(question)
-        .addField("小提醒:", "此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 !solved")
+        .addField("小提醒:", "此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 -solved")
         .setFooter(`玩家&官方協助專區•由 ${timmy.user.tag} 開發`, bot.user.displayAvatarURL);
 
         let logEmbed = new Discord.RichEmbed()
@@ -139,13 +139,13 @@ bot.on("message", async message =>{
 
                 await channel.setParent('652192577398767639')
                     .then(() => channel.send(askEmbed)) 
-                    .then(() => channel.setTopic('此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 !solved'))
+                    .then(() => channel.setTopic('此頻道只有你和問題回覆助手可以看到\n盡可能的詳細描述你的問題，我們會在最短的時間內回覆。\n如果問題解決了請輸入 -solved'))
                     .then(() => logchannel.send(logEmbed))
                     askChannel.send(`[提示]問題小房間創建成功(${channel})`).then(m => m.delete(10000))
             }
         
         }
-        else if(message.content.toLowerCase() === '!solved') { 
+        else if(message.content.toLowerCase() === '-solved') { 
                 if (!message.channel.name.startsWith(`問題小房間-`)) {
                  return;
                 } else{
