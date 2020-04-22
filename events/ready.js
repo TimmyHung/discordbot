@@ -21,7 +21,7 @@ module.exports = bot => {
     let statuses = [
         "PETTW.ONLINE",
         "P.E.T伺服器",
-        "!help 查看指令幫助",
+        "SPP",
     ] 
 
     setInterval(function(){
